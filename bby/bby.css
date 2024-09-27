@@ -1,0 +1,7 @@
+#header > div{
+  gap: 100px;
+}
+
+.pd {
+  padding-right: 15px !important;
+}
