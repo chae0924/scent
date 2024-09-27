@@ -1,6 +1,7 @@
-Thanks for downloading this template!
+# Scent
+분위기를 바꿔주는 레이어링 향수
 
-Template Name: Yummy
-Template URL: https://bootstrapmade.com/yummy-bootstrap-restaurant-website-template/
-Author: BootstrapMade.com
-License: https://bootstrapmade.com/license/
+# chae0924
+
+# email : ws0924@gmail.com
+
