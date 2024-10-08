@@ -812,6 +812,7 @@ section,
   padding: 60px 0;
   display: flex;
   align-items: center;
+  background: url(../../bby/img/hero_bg.jpg) no-repeat 0 0;
 }
 
 .hero h1 {
@@ -1695,6 +1696,14 @@ section,
 --------------------------------------------------------------*/
 .starter-section {
   /* Add your styles here */
+}
+
+.logo {
+  fill: #f7acbe;
+  min-width: 100px;
+}
+.header{
+  height: 80px;
 }
 
 .itemcenter{
