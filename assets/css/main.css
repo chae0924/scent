@@ -10,11 +10,18 @@
 # Font & Color Variables
 # Help: https://bootstrapmade.com/color-system/
 --------------------------------------------------------------*/
+
 /* Fonts */
 :root {
-  --default-font: "Roboto",  system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-  --heading-font: "Amatic SC",  sans-serif;
+  --default-font: "pretendard",  system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  --heading-font: "Nunito",  sans-serif;
   --nav-font: "Inter",  sans-serif;
+}
+@font-face {
+  font-family: 'HD';
+  src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/2408-5@1.0/HakgyoansimDunggeunmisoTTF-B.woff2') format('woff2');
+  font-weight: 700;
+  font-style: normal;
 }
 
 /* Global Colors - The following color variables are used throughout the website. Updating them here will change the color scheme of the entire website */
@@ -22,7 +29,7 @@
   --background-color: #ffffff; /* Background color for the entire website, including individual sections */
   --default-color: #212529; /* Default color used for the majority of the text content across the entire website */
   --heading-color: #37373f; /* Color for headings, subheadings and title throughout the website */
-  --accent-color: #ce1212; /* Accent color that represents your brand on the website. It's used for buttons, links, and other elements that need to stand out */
+  --accent-color: #f7acbe; /* Accent color that represents your brand on the website. It's used for buttons, links, and other elements that need to stand out */
   --surface-color: #ffffff; /* The surface color is used as a background of boxed elements within sections, such as cards, icon boxes, or other elements that require a visual separation from the global background. */
   --contrast-color: #ffffff; /* Contrast color for text, ensuring readability against backgrounds of accent, heading, or default colors. */
 }
@@ -30,11 +37,11 @@
 /* Nav Menu Colors - The following color variables are used specifically for the navigation menu. They are separate from the global colors to allow for more customization options */
 :root {
   --nav-color: #7f7f90;  /* The default color of the main navmenu links */
-  --nav-hover-color: #ce1212; /* Applied to main navmenu links when they are hovered over or active */
-  --nav-mobile-background-color: #ffffff; /* Used as the background color for mobile navigation menu */
+  --nav-hover-color: #f7acbe; /* Applied to main navmenu links when they are hovered over or active */
+  --nav-mobile-background-color: #ffcdd8; /* Used as the background color for mobile navigation menu */
   --nav-dropdown-background-color: #ffffff; /* Used as the background color for dropdown items that appear when hovering over primary navigation items */
   --nav-dropdown-color: #7f7f90; /* Used for navigation links of the dropdown items in the navigation menu. */
-  --nav-dropdown-hover-color: #ce1212; /* Similar to --nav-hover-color, this color is applied to dropdown navigation links when they are hovered over. */
+  --nav-dropdown-hover-color: #f7acbe; /* Similar to --nav-hover-color, this color is applied to dropdown navigation links when they are hovered over. */
 }
 
 /* Color Presets - These classes override global colors when applied to any section or element, providing reuse of the sam color scheme. */
@@ -748,7 +755,7 @@ section,
   color: var(--default-color);
   background-color: var(--background-color);
   padding: 60px 0;
-  scroll-margin-top: 92px;
+  scroll-margin-top: 50px;
   overflow: clip;
 }
 
@@ -786,7 +793,8 @@ section,
   margin: 10px 0 0 0;
   font-size: 48px;
   font-weight: 500;
-  font-family: var(--heading-font);
+  font-family: 'HD';
+  line-height: 56px;
 }
 
 .section-title p .description-title {
@@ -799,6 +807,7 @@ section,
 .hero {
   width: 100%;
   min-height: 60vh;
+  height: 95vh;
   position: relative;
   padding: 60px 0;
   display: flex;
@@ -807,8 +816,10 @@ section,
 
 .hero h1 {
   margin: 0;
-  font-size: 64px;
+  font-size: 3rem;
+  font-family: 'HD';
   font-weight: 700;
+  font-style: normal;
 }
 
 .hero p {
@@ -816,6 +827,7 @@ section,
   margin: 5px 0 30px 0;
   font-size: 20px;
   font-weight: 400;
+  line-height: 26px;
 }
 
 .hero .btn-get-started {
@@ -838,16 +850,18 @@ section,
 }
 
 .hero .btn-watch-video {
-  font-size: 16px;
+  font-size: 18px;
   transition: 0.5s;
   margin-left: 25px;
-  color: var(--default-color);
+  /* color: var(--default-color); */
+  color:#ccc;
   font-weight: 500;
 }
 
 .hero .btn-watch-video i {
-  color: var(--accent-color);
-  font-size: 32px;
+  /* color: var(--accent-color); */
+  color:#ccc;
+  font-size: 20px;
   transition: 0.3s;
   line-height: 0;
   margin-right: 8px;
@@ -862,7 +876,7 @@ section,
 }
 
 .hero .animated {
-  animation: up-down 2s ease-in-out infinite alternate-reverse both;
+  animation: up-down 1.8s ease-in-out infinite alternate-reverse both;
 }
 
 @media (max-width: 640px) {
@@ -957,7 +971,7 @@ section,
 # Why Us Section
 --------------------------------------------------------------*/
 .why-us .why-box {
-  color: var(--contrast-color);
+  color: var(--background-color);
   background: var(--accent-color);
   padding: 30px;
 }
@@ -1035,10 +1049,18 @@ section,
 /*--------------------------------------------------------------
 # Stats Section
 --------------------------------------------------------------*/
+#stats{
+  margin-top: 300px;
+}
 .stats {
   position: relative;
   padding: 120px 0;
+  background: url(../../bby/img/stats_bg_img.png) no-repeat center center; /* 배경을 중앙 정렬 */
+  background-attachment: fixed; /* 배경을 고정 */
+  background-size: cover; /* 배경을 커버 모드로 설정 */
+  height: 600px;
 }
+
 
 .stats img {
   position: absolute;
@@ -1047,12 +1069,12 @@ section,
   width: 100%;
   height: 100%;
   object-fit: cover;
-  z-index: 1;
+  z-index: 0;
 }
 
 .stats:before {
   content: "";
-  background: color-mix(in srgb, var(--background-color), transparent 40%);
+  /* background: color-mix(in srgb, var(--background-color), transparent 40%); */
   position: absolute;
   inset: 0;
   z-index: 2;
@@ -1093,20 +1115,19 @@ section,
 .menu .nav-link {
   background-color: var(--background-color);
   color: color-mix(in srgb, var(--default-color), transparent 20%);
-  margin: 0 15px;
-  padding: 10px 5px;
+  margin: 0 4px;
+  padding: 5px 15px;
   transition: 0.3s;
-  border-radius: 0;
+  border-radius: 50px;
   cursor: pointer;
   height: 100%;
-  border: 0;
-  border-bottom: 2px solid color-mix(in srgb, var(--default-color), transparent 80%);
+  border: 2px solid color-mix(in srgb, var(--default-color), transparent 80%);
 }
 
 @media (max-width: 575px) {
   .menu .nav-link {
-    margin: 0 10px;
-    padding: 10px 0;
+    margin: 0 2px;
+    /* padding: 10px 0; */
   }
 }
 
@@ -1115,11 +1136,22 @@ section,
   font-size: 48px;
 }
 
+.menu .nav-link::after {
+  content:'🌷';
+  display: none;
+}
+.menu .nav-link.active::after {
+  display: inline-block;
+  margin-right: -6px;
+}
+
 .menu .nav-link h4 {
   font-size: 18px;
   font-weight: 400;
   margin: 0;
   font-family: var(--default-font);
+  line-height: 20px;
+  display: inline;
 }
 
 @media (max-width: 575px) {
@@ -1140,7 +1172,7 @@ section,
 }
 
 .menu .tab-content .tab-header {
-  padding: 30px 0;
+  padding: 40px 0 0 0;
 }
 
 .menu .tab-content .tab-header p {
@@ -1166,7 +1198,7 @@ section,
 }
 
 .menu .tab-content .menu-item h4 {
-  font-size: 24px;
+  font-size: 16px;
   font-weight: 400;
   margin-bottom: 5px;
   font-family: var(--default-font);
@@ -1176,12 +1208,23 @@ section,
   font-family: var(--nav-font);
   color: color-mix(in srgb, var(--default-color), transparent 50%);
   margin-bottom: 5px;
+  font-size: 12px;
 }
 
 .menu .tab-content .menu-item .price {
-  font-size: 24px;
+  font-size: 16px;
   font-weight: 700;
   color: var(--accent-color);
+}
+.menu .tab-content .menu-item .price s {
+  font-size: 12px;
+  font-weight: 500;
+  color: #ccc;
+}
+.menu .tab-content .menu-item .price s i {
+  font-size: 12px;
+  font-weight: 500;
+  color: #ccc;
 }
 
 /*--------------------------------------------------------------
@@ -1360,10 +1403,8 @@ section,
   bottom: -1px;
   height: 100%;
   background-color: var(--surface-color);
-  -webkit-mask: url("../img/team-shape.svg") no-repeat center bottom;
-  mask: url("../img/team-shape.svg") no-repeat center bottom;
-  -webkit-mask-size: contain;
-  mask-size: contain;
+  background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="white" fill-opacity="1" d="M0,160L34.3,170.7C68.6,181,137,203,206,202.7C274.3,203,343,181,411,154.7C480,128,549,96,617,112C685.7,128,754,192,823,213.3C891.4,235,960,213,1029,197.3C1097.1,181,1166,171,1234,170.7C1302.9,171,1371,181,1406,186.7L1440,192L1440,320L1405.7,320C1371.4,320,1303,320,1234,320C1165.7,320,1097,320,1029,320C960,320,891,320,823,320C754.3,320,686,320,617,320C548.6,320,480,320,411,320C342.9,320,274,320,206,320C137.1,320,69,320,34,320L0,320Z"></path></svg>') no-repeat center bottom;
+  background-size: contain;
   z-index: 1;
 }
 
@@ -1653,4 +1694,69 @@ section,
 --------------------------------------------------------------*/
 .starter-section {
   /* Add your styles here */
+}
+
+.itemcenter{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.menu-item{
+  /* border: 10px solid #000; */
+}
+
+#shopSwiper{
+  /* border: 10px solid #000; */
+  padding-top: 5vh;
+}
+
+#menu{
+  height: 1000px;
+}
+
+
+.tab-content>.tab-pane{
+  display: block !important;
+  position: relative;
+  z-index: -1;
+  height: 0 !important;
+  overflow: hidden;
+}
+
+.tab-content>.active {
+  z-index: 0;
+  overflow: visible;
+  height: auto !important;
+}
+
+.hoverSwiper .swiper-button-next,
+.hoverSwiper .swiper-button-prev {
+    opacity: 0; /* 기본적으로 숨김 */
+    transition: opacity 0.3s; /* 부드러운 전환 효과 */
+    /* background: rgba(33, 37, 41, 0.1);
+    border-radius: 100%;
+    width: 70px;
+    height: 70px;
+    background-position: 20px 0; */
+}
+
+.hoverSwiper:hover .swiper-button-next,
+.hoverSwiper:hover .swiper-button-prev {
+    opacity: 1; /* 호버 시에 보이도록 설정 */
+}
+
+
+#follow-image {
+  position: absolute;
+  width: 80px;
+  pointer-events: none;
+  transition: transform 0.1s ease; /* 부드러운 움직임을 더 빠르게 */
+  z-index: 100;
+
+}
+
+#header:hover ~ #follow-image {
+  width: 50px; /* 이미지 크기를 50%로 줄임 */
+  transform: translate(-25px, -25px); /* 이미지의 중앙을 마우스 위치로 맞춤 */
 }
