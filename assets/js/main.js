@@ -321,4 +321,36 @@ const saleSwiper = new Swiper('#saleSwiper .swiper-container', {
 });
 
 
+// hero section img random
+const imageCount = 9; // 사용할 이미지 수
+      const basePath = './bby/img/product/hero_'; // 이미지 경로 기본 부분
+      const imageExtension = '.png'; // 이미지 파일 확장자
+
+      // 랜덤 이미지 선택 함수
+      function getRandomImage() {
+          const randomIndex = Math.floor(Math.random() * imageCount) + 1; // 1부터 9까지의 랜덤 인덱스
+          const paddedIndex = String(randomIndex).padStart(2, '0'); // 2자리로 패딩
+          return basePath + paddedIndex + imageExtension;
+      }
+
+      // 페이지 로드 시 랜덤 이미지 설정
+      window.onload = function() {
+          document.getElementById('randomImage').src = getRandomImage();
+      };
+
+      const phrases = [
+            "세상에 단 하나뿐인 향, <br>Scent",
+            "당신만의 특별한 향, <br>Scent",
+            "당신을 위해 디자인된 향, <br>Scent",
+            "당신의 매력을 더해줄 향, <br>Scent"
+        ];
+
+        // 랜덤 인덱스 생성
+        const randomIndex = Math.floor(Math.random() * phrases.length);
+        
+        // 랜덤 문장을 h1 태그에 설정
+        document.getElementById('scent-title').innerHTML = phrases[randomIndex];
+
+
+
 

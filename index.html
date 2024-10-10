@@ -108,7 +108,7 @@
           <li><a href="#hero" class="active">HOME<br></a></li>
           <li><a href="#about">ABOUT</a></li>
           <li><a href="#menu">SHOP</a></li>
-          <li><a href="#contact">PICK</a></li>
+          <li><a href="#PICK">PICK</a></li>
         </ul>
         <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
       </nav>
@@ -117,7 +117,7 @@
 
     </div>
   </header>
-  <!-- <img src="./bby/img/mouse_follow.svg" id="follow-image" alt="Follow Me" /> -->
+  
   
   <main class="main">
 
@@ -142,36 +142,6 @@
 
     </section><!-- /Hero Section -->
 
-    <script>
-      const imageCount = 9; // 사용할 이미지 수
-      const basePath = './bby/img/product/hero_'; // 이미지 경로 기본 부분
-      const imageExtension = '.png'; // 이미지 파일 확장자
-
-      // 랜덤 이미지 선택 함수
-      function getRandomImage() {
-          const randomIndex = Math.floor(Math.random() * imageCount) + 1; // 1부터 9까지의 랜덤 인덱스
-          const paddedIndex = String(randomIndex).padStart(2, '0'); // 2자리로 패딩
-          return basePath + paddedIndex + imageExtension;
-      }
-
-      // 페이지 로드 시 랜덤 이미지 설정
-      window.onload = function() {
-          document.getElementById('randomImage').src = getRandomImage();
-      };
-
-      const phrases = [
-            "세상에 단 하나뿐인 향, <br>Scent",
-            "당신만의 특별한 향, <br>Scent",
-            "당신을 위해 디자인된 향, <br>Scent",
-            "당신의 매력을 더해줄 향, <br>Scent"
-        ];
-
-        // 랜덤 인덱스 생성
-        const randomIndex = Math.floor(Math.random() * phrases.length);
-        
-        // 랜덤 문장을 h1 태그에 설정
-        document.getElementById('scent-title').innerHTML = phrases[randomIndex];
-  </script>
 
     <!-- About Section -->
     <section id="about" class="about section">
@@ -436,7 +406,7 @@
                     <div class="shop-swiper-pagination itemcenter py-3"></div>
                     <!-- Add Navigation -->
                      <div class="navigation">
-                    <div class="swiper-button-next itemcenter"></div>
+                    <div class="swiper-button-next itemcenter px-0 mx-0"></div>
                     <div class="swiper-button-prev itemcenter"></div>
                   </div>
                   </div>
@@ -693,12 +663,12 @@
 
     
     <!-- Chefs Section -->
-    <section id="chefs" class="chefs section">
+    <section id="PICK" class="chefs section">
 
       <!-- Section Title -->
       <div class="container section-title" data-aos="fade-up">
-        <h2>chefs</h2>
-        <p><span>Our</span> <span class="description-title">Proffesional Chefs<br></span></p>
+        <h2>PICK</h2>
+        <p><span>당신의</span> <span class="description-title">취향은?<br></span></p>
       </div><!-- End Section Title -->
 
       <div class="container">
@@ -706,15 +676,16 @@
         <div class="row gy-4">
           
           <div class="col-lg-4 d-flex align-items-stretch" data-aos="fade-up" data-aos-delay="100">
+            <a href="https://www.instagram.com/bussi.official/?igshid=MzRlODBiNWFlZA%3D%3D" target="_blank">
             <div class="team-member">
               <div class="member-img">
                 <img src="assets/img/chefs/chefs-1.jpg" class="img-fluid" alt="">
-                <div class="social">
+                <!-- <div class="social">
                   <a href=""><i class="bi bi-twitter-x"></i></a>
                   <a href=""><i class="bi bi-facebook"></i></a>
                   <a href=""><i class="bi bi-instagram"></i></a>
                   <a href=""><i class="bi bi-linkedin"></i></a>
-                </div>
+                </div> -->
               </div>
               <div class="member-info">
                 <h4>Walter White</h4>
@@ -722,45 +693,51 @@
                 <p>Velit aut quia fugit et et. Dolorum ea voluptate vel tempore tenetur ipsa quae aut. Ipsum exercitationem iure minima enim corporis et voluptate.</p>
               </div>
             </div>
-          </div><!-- End Chef Team Member -->
-          
-          <div class="col-lg-4 d-flex align-items-stretch" data-aos="fade-up" data-aos-delay="200">
-            <div class="team-member">
-              <div class="member-img">
-                <img src="assets/img/chefs/chefs-2.jpg" class="img-fluid" alt="">
-                <div class="social">
-                  <a href=""><i class="bi bi-twitter-x"></i></a>
-                  <a href=""><i class="bi bi-facebook"></i></a>
-                  <a href=""><i class="bi bi-instagram"></i></a>
-                  <a href=""><i class="bi bi-linkedin"></i></a>
-                </div>
-              </div>
-              <div class="member-info">
-                <h4>Sarah Jhonson</h4>
-                <span>Patissier</span>
-                <p>Quo esse repellendus quia id. Est eum et accusantium pariatur fugit nihil minima suscipit corporis. Voluptate sed quas reiciendis animi neque sapiente.</p>
-              </div>
-            </div>
+          </a>
           </div><!-- End Chef Team Member -->
 
-          <div class="col-lg-4 d-flex align-items-stretch" data-aos="fade-up" data-aos-delay="300">
+          <div class="col-lg-4 d-flex align-items-stretch" data-aos="fade-up" data-aos-delay="100">
+            <a href="https://www.instagram.com/bussi.official/?igshid=MzRlODBiNWFlZA%3D%3D" target="_blank">
             <div class="team-member">
               <div class="member-img">
-                <img src="assets/img/chefs/chefs-3.jpg" class="img-fluid" alt="">
-                <div class="social">
+                <img src="assets/img/chefs/chefs-1.jpg" class="img-fluid" alt="">
+                <!-- <div class="social">
                   <a href=""><i class="bi bi-twitter-x"></i></a>
                   <a href=""><i class="bi bi-facebook"></i></a>
                   <a href=""><i class="bi bi-instagram"></i></a>
                   <a href=""><i class="bi bi-linkedin"></i></a>
-                </div>
+                </div> -->
               </div>
               <div class="member-info">
-                <h4>William Anderson</h4>
-                <span>Cook</span>
-                <p>Vero omnis enim consequatur. Voluptas consectetur unde qui molestiae deserunt. Voluptates enim aut architecto porro aspernatur molestiae modi.</p>
+                <h4>Walter White</h4>
+                <span>Master Chef</span>
+                <p>Velit aut quia fugit et et. Dolorum ea voluptate vel tempore tenetur ipsa quae aut. Ipsum exercitationem iure minima enim corporis et voluptate.</p>
               </div>
             </div>
+          </a>
           </div><!-- End Chef Team Member -->
+
+          <div class="col-lg-4 d-flex align-items-stretch" data-aos="fade-up" data-aos-delay="100">
+            <a href="https://www.instagram.com/bussi.official/?igshid=MzRlODBiNWFlZA%3D%3D" target="_blank">
+            <div class="team-member">
+              <div class="member-img">
+                <img src="assets/img/chefs/chefs-1.jpg" class="img-fluid" alt="">
+                <!-- <div class="social">
+                  <a href=""><i class="bi bi-twitter-x"></i></a>
+                  <a href=""><i class="bi bi-facebook"></i></a>
+                  <a href=""><i class="bi bi-instagram"></i></a>
+                  <a href=""><i class="bi bi-linkedin"></i></a>
+                </div> -->
+              </div>
+              <div class="member-info">
+                <h4>Walter White</h4>
+                <span>Master Chef</span>
+                <p>Velit aut quia fugit et et. Dolorum ea voluptate vel tempore tenetur ipsa quae aut. Ipsum exercitationem iure minima enim corporis et voluptate.</p>
+              </div>
+            </div>
+          </a>
+          </div><!-- End Chef Team Member -->
+          
 
         </div>
         
@@ -779,54 +756,56 @@
 
       <div class="container" data-aos="fade-up" data-aos-delay="100">
 
-        <div class="mb-5">
-          <iframe style="width: 100%; height: 400px;" src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d12097.433213460943!2d-74.0062269!3d40.7101282!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xb89d1fe6bc499443!2sDowntown+Conference+Center!5e0!3m2!1smk!2sbg!4v1539943755621" frameborder="0" allowfullscreen=""></iframe>
-        </div><!-- End Google Maps -->
+        
+        <div class="row gy-5 pt-4">
 
-        <div class="row gy-4">
+          <div class="col-lg-6">
+            <div id="map"></div>
+
+            <!-- <iframe style="width: 100%; height: 500px; background: none; border-radius: 20px;" src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d12097.433213460943!2d-74.0062269!3d40.7101282!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xb89d1fe6bc499443!2sDowntown+Conference+Center!5e0!3m2!1smk!2sbg!4v1539943755621" frameborder="0" allowfullscreen=""></iframe> -->
+          </div><!-- End Google Maps -->
           
-          <div class="col-md-6">
-            <div class="info-item d-flex align-items-center" data-aos="fade-up" data-aos-delay="200">
+          <!-- <div class="col-lg-6">
+            <div class="info-item d-flex align-items-center rounded" data-aos="fade-up" data-aos-delay="200">
               <i class="icon bi bi-geo-alt flex-shrink-0"></i>
               <div>
                 <h3>Address</h3>
                 <p>A108 Adam Street, New York, NY 535022</p>
               </div>
             </div>
-          </div><!-- End Info Item -->
-          
+          </div>
           <div class="col-md-6">
-            <div class="info-item d-flex align-items-center" data-aos="fade-up" data-aos-delay="300">
+            <div class="info-item d-flex align-items-center rounded" data-aos="fade-up" data-aos-delay="300">
               <i class="icon bi bi-telephone flex-shrink-0"></i>
               <div>
                 <h3>Call Us</h3>
                 <p>+1 5589 55488 55</p>
               </div>
             </div>
-          </div><!-- End Info Item -->
+          </div>
 
           <div class="col-md-6">
-            <div class="info-item d-flex align-items-center" data-aos="fade-up" data-aos-delay="400">
+            <div class="info-item d-flex align-items-center rounded" data-aos="fade-up" data-aos-delay="400">
               <i class="icon bi bi-envelope flex-shrink-0"></i>
               <div>
                 <h3>Email Us</h3>
                 <p>info@example.com</p>
               </div>
             </div>
-          </div><!-- End Info Item -->
+          </div>
           
           <div class="col-md-6">
-            <div class="info-item d-flex align-items-center" data-aos="fade-up" data-aos-delay="500">
+            <div class="info-item d-flex align-items-center rounded" data-aos="fade-up" data-aos-delay="500">
               <i class="icon bi bi-clock flex-shrink-0"></i>
               <div>
                 <h3>Opening Hours<br></h3>
                 <p><strong>Mon-Sat:</strong> 11AM - 23PM; <strong>Sunday:</strong> Closed</p>
               </div>
             </div>
-          </div><!-- End Info Item -->
+          </div>End Info Item -->
 
-        </div>
         
+          <div class="col-lg-6 overflow-hidden">
         <form action="forms/contact.php" method="post" class="php-email-form" data-aos="fade-up" data-aos-delay="600">
           <div class="row gy-4">
 
@@ -843,7 +822,7 @@
             </div>
 
             <div class="col-md-12">
-              <textarea class="form-control" name="message" rows="6" placeholder="Message" required=""></textarea>
+              <textarea class="form-control mh-500" name="message" rows="6" placeholder="Message" required=""></textarea>
             </div>
 
             <div class="col-md-12 text-center">
@@ -856,7 +835,8 @@
             
           </div>
         </form><!-- End Contact Form -->
-
+        </div>
+      </div>
       </div>
 
     </section><!-- /Contact Section -->
@@ -1035,10 +1015,14 @@
         <div class="col-lg-3 col-md-6">
           <h4>Follow Us</h4>
           <div class="social-links d-flex">
-            <a href="#" class="twitter"><i class="bi bi-twitter-x"></i></a>
-            <a href="#" class="facebook"><i class="bi bi-facebook"></i></a>
-            <a href="#" class="instagram"><i class="bi bi-instagram"></i></a>
-            <a href="#" class="linkedin"><i class="bi bi-linkedin"></i></a>
+            <a href="https://github.com/chae0924/scent" class="twitter" target="_blank"><i class="bi bi-github"></i></a>
+            <a id="footerSns-email" class="footerSns-icons userCustomIcon-icomoon-email" 
+            href="https://mail.google.com/mail/?view=cm&fs=1&to=ws0924@gmail.com&su=제목&body=내용" 
+            target="_blank">
+            <div data-i="bi bi-envelope" class="bi bi-envelope"></div>
+            <a href="https://www.instagram.com/bussi.official/?igshid=MzRlODBiNWFlZA%3D%3D" class="instagram" target="_blank"><i class="bi bi-instagram"></i></a>
+         </a>
+         
           </div>
         </div>
 
@@ -1072,7 +1056,7 @@
   <script src="assets/vendor/purecounter/purecounter_vanilla.js"></script>
   <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
 
-  <!-- 커스텀 js 파일 -->
+  <!-- 커스텀커서 js 파일 -->
   <script src="https://unpkg.com/cursor-effects@latest/dist/browser.js"></script>
     <script type="module">
         import { emojiCursor } from "https://unpkg.com/cursor-effects@latest/dist/esm.js";
@@ -1080,31 +1064,25 @@
         
     </script>
 
+<script src="https://dapi.kakao.com/v2/maps/sdk.js?appkey=5acd8b2a4989bd86f74db5a8dc5cbcab&autoload=false"></script>
+<script>
+      // 카카오맵 초기화
+      kakao.maps.load(function() {
+        const mapContainer = document.getElementById('map');
+        const mapOptions = {
+            center: new kakao.maps.LatLng(37.559240, 126.925389), // 서울
+            level: 3 // 확대 레벨
+        };
+        const map = new kakao.maps.Map(mapContainer, mapOptions);
 
-  <!-- <script>
-           const followImage = document.getElementById('follow-image');
-
-// 마우스 위치를 추적하기 위한 변수
-let mouseX = window.innerWidth / 2;
-let mouseY = window.innerHeight / 2;
-
-// 마우스 움직임 감지
-document.addEventListener('mousemove', (event) => {
-    mouseX = event.clientX; // 현재 마우스 X 좌표
-    mouseY = event.clientY; // 현재 마우스 Y 좌표
-    updateImagePosition(); // 이미지 위치 업데이트
-});
-
-// 스크롤 시 이미지 위치 업데이트
-window.addEventListener('scroll', () => {
-    updateImagePosition(); // 이미지 위치 업데이트
-});
-
-// 이미지 위치 업데이트 함수
-function updateImagePosition() {
-    followImage.style.transform = `translate3d(${mouseX - 40}px, ${mouseY + window.scrollY - 40}px, 0)`; // 50px는 이미지의 절반 너비
-}
-  </script> -->
+        // 마커 추가
+        const markerPosition = new kakao.maps.LatLng(37.559240, 126.925389);
+        const marker = new kakao.maps.Marker({
+            position: markerPosition
+        });
+        marker.setMap(map);
+    });
+</script>
 
   <!-- Main JS File -->
   <script src="assets/js/main.js"></script>
