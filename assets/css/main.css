@@ -1677,7 +1677,7 @@ section,
 }
 
 .contact .php-email-form input[type=text],
-.contact .php-email-form input[type=email],
+.contact .php-email-form input[type=tel],
 .contact .php-email-form textarea {
   color: var(--default-color);
   background-color: color-mix(in srgb, var(--surface-color), transparent 50%);
@@ -1685,21 +1685,88 @@ section,
   font-size: 14px;
   padding: 10px 15px;
   box-shadow: none;
-  border-radius: 0;
+  border-radius: 5px;
   max-height: 240px;
 }
 
 .contact .php-email-form input[type=text]:focus,
-.contact .php-email-form input[type=email]:focus,
+.contact .php-email-form input[type=tel]:focus,
 .contact .php-email-form textarea:focus {
   border-color: var(--accent-color);
 }
 
 .contact .php-email-form input[type=text]::placeholder,
-.contact .php-email-form input[type=email]::placeholder,
+.contact .php-email-form input[type=tel]::placeholder,
 .contact .php-email-form textarea::placeholder {
   color: color-mix(in srgb, var(--default-color), transparent 70%);
 }
+
+.selectBox{
+  color: var(--default-color);
+  border: 1px soild #7f7f90;
+  background-color: color-mix(in srgb, var(--surface-color), transparent 50%);
+  border-color: color-mix(in srgb, var(--default-color), transparent 80%);
+  font-size: 14px;
+  padding: 10px 15px;
+  box-shadow: none;
+  border-radius: 5px;
+  max-height: 240px;
+  
+}
+.form-check-input {
+  appearance: none; /* 기본 스타일 제거 */
+  width: 20px; /* 너비 조정 */
+  height: 20px; /* 높이 조정 */
+  border: 2px solid #ccc; /* 기본 테두리 색상 */
+  border-radius: 50%; /* 둥근 모양 */
+  outline: none; /* 기본 아웃라인 제거 */
+  cursor: pointer; /* 커서 포인터로 변경 */
+  margin-right: 5px;
+  margin-top: -0.2px;
+}
+
+.form-check-input:checked {
+  border: 2px solid #f7acbe; /* 체크된 경우 테두리 색상 변경 */
+  background-color: #f7acbe; /* 체크된 경우 배경 색상 변경 */
+}
+
+.form-check-input:focus {
+  outline: none !important; /* 포커스 아웃라인 제거 */
+  box-shadow: none !important; /* 박스 그림자 제거 */
+}
+
+.radio-label {
+  margin-right: 100px;
+  margin-bottom: 5px;
+}
+
+.date-input {
+  border: 1px solid #ccc; /* 기본 테두리 색상 */
+  border-radius: 4px; /* 모서리 둥글게 */
+  padding: 10px; /* 패딩 추가 */
+  width: 70%; /* 너비 설정 */
+  cursor: pointer; /* 커서 변경 */
+}
+
+/* 포커스 시 테두리 색상 변경 */
+.date-input:focus {
+  border-color: #f7acbc; 
+  outline: none; /* 기본 아웃라인 제거 */
+}
+
+/* 아이콘 스타일 */
+.date-input::-webkit-calendar-picker-indicator {
+  cursor: pointer; /* 커서 변경 */
+  color: #f7acbc;
+}
+
+
+
+.dateName{
+  margin: 0 13px 0 6px;
+}
+
+
 
 .contact .php-email-form button[type=submit] {
   color: var(--contrast-color);
@@ -1807,11 +1874,15 @@ section,
   border-radius: 20px;
   background: #ffffff;
   box-shadow: 8px 8px 15px rgba(200, 200, 200, 0.3), 
-              -8px -8px 15px rgb(255, 255, 255);
+  -8px -8px 15px rgb(255, 255, 255);
   touch-action: pan-x pan-y; /* 드래그와 스크롤을 허용 */
   z-index: 0;
 }
 
+#kakaomap{
+  border-radius: 20px;
+  
+}
 
 /* 모바일에서 터치 비활성화 */
 @media (hover: none) {

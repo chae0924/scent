@@ -352,5 +352,13 @@ const imageCount = 9; // 사용할 이미지 수
         document.getElementById('scent-title').innerHTML = phrases[randomIndex];
 
 
+        
+        const dateInput = document.getElementById('datePicker');
+        const dateIcon = document.querySelector('.date-icon');
+        
+        dateIcon.addEventListener('click', function() {
+          dateInput.click(); // 입력 박스를 클릭하여 날짜 선택창 열기
+        });
+        
 
 
