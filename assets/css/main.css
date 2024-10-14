@@ -71,6 +71,7 @@ body {
   color: var(--default-color);
   background-color: var(--background-color);
   font-family: var(--default-font);
+  overflow-x: hidden; /* 가로 스크롤 숨기기 */
 }
 
 a {
@@ -1060,7 +1061,7 @@ section,
   padding: 120px 0;
   background: url(../../bby/img/stats_bg_img.jpg) no-repeat center center; /* 배경을 중앙 정렬 */
   background-attachment: fixed; /* 배경을 고정 */
-  width: 100vw;
+  width: 100%;
   background-size: cover; /* 배경을 커버 모드로 설정 */
   height: 600px;
 }
@@ -1769,21 +1770,21 @@ section,
   height: auto !important;
 }
 
+/* 기본적으로 숨김 */
 .hoverSwiper .swiper-button-next,
 .hoverSwiper .swiper-button-prev {
     opacity: 0; /* 기본적으로 숨김 */
     transition: opacity 0.3s; /* 부드러운 전환 효과 */
-    /* background: rgba(33, 37, 41, 0.1);
-    border-radius: 100%;
-    width: 70px;
-    height: 70px;
-    background-position: 20px 0; */
 }
 
-.hoverSwiper:hover .swiper-button-next,
-.hoverSwiper:hover .swiper-button-prev {
-    opacity: 1; /* 호버 시에 보이도록 설정 */
+/* lg 크기 이상에서만 호버 시에 보이도록 설정 */
+@media (min-width: 992px) {
+    .hoverSwiper:hover .swiper-button-next,
+    .hoverSwiper:hover .swiper-button-prev {
+        opacity: 1; /* 호버 시에 보이도록 설정 */
+    }
 }
+
 
 
 #follow-image {
