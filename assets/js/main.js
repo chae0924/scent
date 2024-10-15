@@ -352,27 +352,30 @@ const imageCount = 9; // 사용할 이미지 수
         document.getElementById('scent-title').innerHTML = phrases[randomIndex];
 
 
-        
-        // 오늘 날짜와 4주(28일) 이후의 날짜 계산
-        const today = new Date();
-        const maxDate = new Date(today);
-        maxDate.setDate(today.getDate() + 28); // 오늘로부터 28일 후
-
-        // flatpickr 초기화
-        flatpickr("#date-picker", {
-          dateFormat: "Y-m-d", // 날짜 형식
-          allowInput: true,     // 사용자가 직접 입력 가능
-          locale: "ko",         // 한국어
-          maxDate: maxDate,     // 최대 선택 가능 날짜 설정
-          onDayCreate: function(dObj, dStr, fp, dayElem) {
-              // 요일이 월요일(1)인 경우 비활성화
-              if (fp.currentYear === dayElem.dateObj.getFullYear() &&
-                  fp.currentMonth === dayElem.dateObj.getMonth() &&
-                  dayElem.dateObj.getDay() === 1) { // 1은 월요일을 의미
-                  dayElem.classList.add("disabled");
+        //date picker
+        document.addEventListener("DOMContentLoaded", function() {
+          // 오늘 날짜와 4주(28일) 이후의 날짜 계산
+          const today = new Date();
+          const maxDate = new Date(today);
+          maxDate.setDate(today.getDate() + 28); // 오늘로부터 28일 후
+      
+          // flatpickr 초기화
+          flatpickr("#date-picker", {
+              dateFormat: "Y-m-d", // 날짜 형식
+              allowInput: true,     // 사용자가 직접 입력 가능
+              locale: "ko",         // 한국어
+              maxDate: maxDate,     // 최대 선택 가능 날짜 설정
+              onDayCreate: function(dObj, dStr, fp, dayElem) {
+                  // 요일이 월요일(1)인 경우 비활성화
+                  if (fp.currentYear === dayElem.dateObj.getFullYear() &&
+                      fp.currentMonth === dayElem.dateObj.getMonth() &&
+                      dayElem.dateObj.getDay() === 1) { // 1은 월요일을 의미
+                      dayElem.classList.add("disabled");
+                  }
               }
-          }
+          });
       });
+      
 
         
 

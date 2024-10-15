@@ -584,9 +584,6 @@ h6 {
   margin-bottom: 15px;
 }
 
-.footer .address p {
-  margin-bottom: 0px;
-}
 
 .footer .social-links a {
   display: flex;
@@ -758,7 +755,7 @@ section,
   color: var(--default-color);
   background-color: var(--background-color);
   padding: 80px 0;
-  scroll-margin-top: 50px;
+  scroll-margin-top: 20px;
   overflow: clip;
 }
 
@@ -911,6 +908,44 @@ section,
   }
 }
 
+/*--------------------------------------------------------------
+# line banner marquee Section
+--------------------------------------------------------------*/
+.marquee-wrapper {
+  width: 100%; /* 화면 전체 넓이 */
+  overflow: hidden; /* 넘치는 부분 숨기기 */
+  background-color: #f7d4e3; /* 배경색 */
+  white-space: nowrap; /* 텍스트를 한 줄로 유지 */
+  height: auto;
+}
+
+/* 마르퀴 내부의 텍스트 */
+.marquee-content {
+  display: inline-block;
+  padding-left: 100%; /* 텍스트를 오른쪽에서 시작하게 설정 */
+  animation: marquee 50s linear infinite; /* 15초 동안 계속 반복 */
+  height: 100%;
+  padding: 5px 0;
+}
+
+/* 애니메이션 설정 */
+@keyframes marquee {
+  from {
+      transform: translateX(-30%); /* 시작: 텍스트가 오른쪽 끝에서 */
+  }
+  to {
+      transform: translateX(-100%); /* 끝: 텍스트가 왼쪽 끝으로 */
+  }
+}
+
+/* 텍스트 스타일 */
+.marquee-text {
+  font-size: 13px;
+  color: #333;
+  font-family: 'Arial', sans-serif;
+  margin-left: 80px;
+
+}
 /*--------------------------------------------------------------
 # About Section
 --------------------------------------------------------------*/
@@ -1393,7 +1428,7 @@ section,
 # Chefs Section
 --------------------------------------------------------------*/
 #PICK{
-  scroll-margin-top: 35px !important;
+  scroll-margin-top: 15px !important;
 }
 
 .chefs .team-member {
@@ -1758,64 +1793,72 @@ section,
 }
 
 .date-input {
-  border: 1px solid #ccc; /* 기본 테두리 색상 */
-  border-radius: 4px; /* 모서리 둥글게 */
-  padding: 10px; /* 패딩 추가 */
-  width: 100%; /* 너비 설정 */
-  cursor: pointer; /* 커서 변경 */
-  height: 43px;
+  border: 1px solid #ccc !important;
+  border-radius: 4px !important; 
+  padding: 10px !important;
+  width: 100% !important;
+  cursor: pointer !important;
+  height: 43px !important;
+  box-sizing: border-box;
+  background: #fff;
+  color: #333 !important;   
+  font-size: 14px !important;
+  text-align: left;
+  appearance: none; /* 기본 브라우저 스타일 제거 */
+  -webkit-appearance: none; /* WebKit 기반 브라우저 (Safari, Chrome) */
+  -moz-appearance: none; /* Firefox */
 }
 
 /* 포커스 시 테두리 색상 변경 */
 .date-input:focus {
-  border-color: #f7acbc; 
-  outline: none; /* 기본 아웃라인 제거 */
+  border-color: #f7acbc !important; 
+  outline: none !important; /* 기본 아웃라인 제거 */
 }
 
 /* 아이콘 스타일 */
 .date-input::-webkit-calendar-picker-indicator {
-  cursor: pointer; /* 커서 변경 */
-  color: #f7acbc;
+  cursor: pointer !important; /* 커서 변경 */
+  color: #f7acbc !important;
 }
 
 /* 날짜 선택기 스타일 */
 .flatpickr-calendar {
-  font-family: 'Arial', sans-serif; /* 원하는 폰트로 변경 */
-  font-size: 16px;                  /* 폰트 크기 설정 */
+  font-family: 'Arial', sans-serif !important; /* 원하는 폰트로 변경 */
+  font-size: 16px !important;                  /* 폰트 크기 설정 */
 }
 
 .flatpickr-month {
-  font-size: 14px;        /* 원하는 폰트 크기 */
-  font-weight: bold;      /* 폰트 두께 조정 */
-  color: #333;            /* 색상 조정 */
+  font-size: 14px !important;        /* 원하는 폰트 크기 */
+  font-weight: bold !important;      /* 폰트 두께 조정 */
+  color: #333 !important;            /* 색상 조정 */
 }
 
 .flatpickr-day {
-  color: #333;                     /* 날짜 색상 */
-  font-size: 14px;
+  color: #333 !important;                     /* 날짜 색상 */
+  font-size: 14px !important;
 }
 
 .flatpickr-weekday {
-  font-size: 18px;                 /* 요일 폰트 크기 */
-  font-weight: bold;               /* 요일 폰트 두께 조정 */
-  color: #666;                     /* 요일 색상 조정 */
+  font-size: 18px !important;                 /* 요일 폰트 크기 */
+  font-weight: bold !important;               /* 요일 폰트 두께 조정 */
+  color: #666 !important;                     /* 요일 색상 조정 */
 }
 
 .flatpickr-day.today {
-  border-color: #f7acbc;      /* 오늘 날짜 색상 */
-  color: #333;                    /* 오늘 날짜 글자색 */
+  border-color: #f7acbc !important;      /* 오늘 날짜 색상 */
+  color: #333 !important;                    /* 오늘 날짜 글자색 */
 }
 
 .flatpickr-day.selected {
-  background-color: #f7acbd;      /* 선택된 날짜 색상 */
-  border: none;
-  color: white;                    /* 선택된 날짜 글자색 */
+  background-color: #f7acbd !important;      /* 선택된 날짜 색상 */
+  border: none !important;
+  color: white !important;                    /* 선택된 날짜 글자색 */
 }
 
- /* 비활성화된 날짜 스타일 */
- .flatpickr-day.disabled {
-  color: #ccc;                     /* 비활성화된 날짜 색상 */
-  pointer-events: none;            /* 클릭 이벤트 비활성화 */
+/* 비활성화된 날짜 스타일 */
+.flatpickr-day.disabled {
+  color: #ccc !important;                     /* 비활성화된 날짜 색상 */
+  pointer-events: none !important;            /* 클릭 이벤트 비활성화 */
 }
 
 
