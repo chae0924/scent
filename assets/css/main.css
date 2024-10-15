@@ -595,10 +595,10 @@ h6 {
   width: 40px;
   height: 40px;
   border-radius: 50%;
-  border: 1px solid color-mix(in srgb, var(--default-color), transparent 50%);
+  /* border: 1px solid color-mix(in srgb, var(--default-color), transparent 50%); */
   font-size: 16px;
   color: color-mix(in srgb, var(--default-color), transparent 50%);
-  margin-right: 10px;
+  /* margin-right: 10px; */
   transition: 0.3s;
 }
 
@@ -1668,11 +1668,14 @@ section,
   height: 500px;
   border-radius: 20px;
   /* border: 1px solid  rgba(200, 200, 200, 0.1); */
+  display: flex;
+  flex-direction: column;
 }
 
-@media (max-width: 575px) {
+@media (max-width: 767px) {
   .contact .php-email-form {
     padding: 20px;
+    height: 580px;
   }
 }
 
@@ -1686,7 +1689,14 @@ section,
   padding: 10px 15px;
   box-shadow: none;
   border-radius: 5px;
-  max-height: 240px;
+  max-height: 200px;
+  overflow: auto;
+}
+@media (max-width: 991px) {
+.contact .php-email-form textarea {
+  max-height: 105px;
+  overflow: auto;
+  }
 }
 
 .contact .php-email-form input[type=text]:focus,
@@ -1713,7 +1723,14 @@ section,
   max-height: 240px;
   
 }
+
+.form-check{
+  display: inline-block;
+  margin-right: 10px;
+}
+
 .form-check-input {
+  display: block;
   appearance: none; /* 기본 스타일 제거 */
   width: 20px; /* 너비 조정 */
   height: 20px; /* 높이 조정 */
@@ -1744,8 +1761,9 @@ section,
   border: 1px solid #ccc; /* 기본 테두리 색상 */
   border-radius: 4px; /* 모서리 둥글게 */
   padding: 10px; /* 패딩 추가 */
-  width: 70%; /* 너비 설정 */
+  width: 100%; /* 너비 설정 */
   cursor: pointer; /* 커서 변경 */
+  height: 43px;
 }
 
 /* 포커스 시 테두리 색상 변경 */
@@ -1760,11 +1778,58 @@ section,
   color: #f7acbc;
 }
 
-
-
-.dateName{
-  margin: 0 13px 0 6px;
+/* 날짜 선택기 스타일 */
+.flatpickr-calendar {
+  font-family: 'Arial', sans-serif; /* 원하는 폰트로 변경 */
+  font-size: 16px;                  /* 폰트 크기 설정 */
 }
+
+.flatpickr-month {
+  font-size: 14px;        /* 원하는 폰트 크기 */
+  font-weight: bold;      /* 폰트 두께 조정 */
+  color: #333;            /* 색상 조정 */
+}
+
+.flatpickr-day {
+  color: #333;                     /* 날짜 색상 */
+  font-size: 14px;
+}
+
+.flatpickr-weekday {
+  font-size: 18px;                 /* 요일 폰트 크기 */
+  font-weight: bold;               /* 요일 폰트 두께 조정 */
+  color: #666;                     /* 요일 색상 조정 */
+}
+
+.flatpickr-day.today {
+  border-color: #f7acbc;      /* 오늘 날짜 색상 */
+  color: #333;                    /* 오늘 날짜 글자색 */
+}
+
+.flatpickr-day.selected {
+  background-color: #f7acbd;      /* 선택된 날짜 색상 */
+  border: none;
+  color: white;                    /* 선택된 날짜 글자색 */
+}
+
+ /* 비활성화된 날짜 스타일 */
+ .flatpickr-day.disabled {
+  color: #ccc;                     /* 비활성화된 날짜 색상 */
+  pointer-events: none;            /* 클릭 이벤트 비활성화 */
+}
+
+
+
+
+
+
+label:not(.form-check){
+  /* margin: 0 13px 0 6px; */
+  display: block;
+  color: #212529;
+  font-size: 14px;
+}
+
 
 
 
@@ -1884,17 +1949,18 @@ section,
   
 }
 
-/* 모바일에서 터치 비활성화 */
-@media (hover: none) {
+/* 모바일에서 터치 비활성화 (991px 이하에서만 적용) */
+@media (hover: none) and (max-width: 991.98px) {
   #map {
       /* pointer-events: none; 터치 이벤트 무시 */
       height: 350px;
   }
 }
-
-#map a{
-  z-index: 9999;
-}
+  
+  
+  #map a{
+    z-index: 9999;
+  }
 
 
 .swiper-button-prev, .swiper-rtl .swiper-button-next{
