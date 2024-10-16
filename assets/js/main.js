@@ -180,6 +180,30 @@
 
 
 
+
+
+//brand story mobile swiper
+document.addEventListener("DOMContentLoaded", function() {
+  const swiper = new Swiper('.mo .swiper-container', {
+    loop: true, // 무한 스크롤
+    slidesPerView: 1, // 한 번에 보이는 슬라이드 개수
+    spaceBetween: 10, // 슬라이드 간격
+    breakpoints: {
+      // 화면 크기에 따라 슬라이드 개수 조절
+      768: {
+        slidesPerView: 2, // 태블릿 이상일 때 2개의 슬라이드
+        spaceBetween: 20
+      },
+      1024: {
+        slidesPerView: 3, // 데스크탑일 때 3개의 슬라이드
+        spaceBetween: 30
+      }
+    }
+  });
+});
+
+
+
 // shopSwiper
         const shopSwiper = new Swiper('#shopSwiper .swiper-container', {
             slidesPerView: 3, // 한 번에 보여줄 슬라이드 수
@@ -396,8 +420,56 @@ const imageCount = 9; // 사용할 이미지 수
         document.querySelector('input[name="pick"][value="citrus"]').checked = true;
       });
 
+      
+      //review swiper
+  document.addEventListener("DOMContentLoaded", function() {
+    // Swiper initialization
+    const swiper = new Swiper('.mcon06 .swiper-container', {
+      loop: true, // 무한 스크롤
+      navigation: {
+        nextEl: '.swiper-button-next', // 다음 버튼
+        prevEl: '.swiper-button-prev', // 이전 버튼
+      },
+      pagination: {
+        el: '.swiper-pagination', // 페이지네이션 요소
+        clickable: true, // 페이지네이션 클릭 활성화
+      },
+      autoplay: {
+        delay: 5000, // 3초 간격으로 자동 슬라이드
+        disableOnInteraction: false, // 사용자 상호작용 후에도 자동 슬라이드 유지
+      },
+      speed: 800, // 슬라이드 애니메이션 속도 (밀리초)
+    });
+  });
+
+
+
     
 
         
 
-
+  const inner2 = document.querySelector('.inner2');
+  let animationTimeout; // 애니메이션 타이머를 저장할 변수
+  
+  function handleScroll() {
+      const rect = inner2.getBoundingClientRect();
+  
+      // 요소가 뷰포트에 들어올 때
+      if (rect.top < window.innerHeight && rect.bottom > 0) {
+          // 이미 타이머가 설정되어 있으면 취소
+          clearTimeout(animationTimeout);
+  
+          // 1초 후에 fixed 클래스 추가
+          animationTimeout = setTimeout(() => {
+              inner2.classList.add('fixed');
+          }, 300); // 300ms = 0.3초
+      } else {
+          // 뷰포트를 벗어나면 클래스 제거 및 타이머 초기화
+          inner2.classList.remove('fixed');
+          clearTimeout(animationTimeout);
+      }
+  }
+  
+  // 스크롤 이벤트 리스너 추가
+  window.addEventListener('scroll', handleScroll);
+  
