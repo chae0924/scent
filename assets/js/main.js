@@ -377,6 +377,27 @@ const imageCount = 9; // 사용할 이미지 수
       });
       
 
+      // chef pick checked
+      // 우디 향 선택
+      document.getElementById('contactLinkWoody').addEventListener('click', function() {
+        document.getElementById('contact').scrollIntoView({ behavior: 'smooth' });
+        document.querySelector('input[name="pick"][value="woody"]').checked = true;
+      });
+
+      // 플로럴 향 선택
+      document.getElementById('contactLinkFloral').addEventListener('click', function() {
+        document.getElementById('contact').scrollIntoView({ behavior: 'smooth' });
+        document.querySelector('input[name="pick"][value="floral"]').checked = true;
+      });
+
+      // 상큼/프레쉬한 향 선택
+      document.getElementById('contactLinkCitrus').addEventListener('click', function() {
+        document.getElementById('contact').scrollIntoView({ behavior: 'smooth' });
+        document.querySelector('input[name="pick"][value="citrus"]').checked = true;
+      });
+
+    
+
         
 
 

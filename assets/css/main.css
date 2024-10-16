@@ -1456,7 +1456,7 @@ section,
 
 @media (min-width: 992px) and (max-width:1199px){
   .chefs .team-member {
-    border-radius: 58px;
+    border-radius: 56px;
   }
 }
 
@@ -1469,20 +1469,55 @@ section,
   border-radius: 17%;
   margin: 10px auto;
   vertical-align: middle;
-  object-fit: cover;
+  object-fit: contain;
 }
 
-@media (min-width: 0px) and (max-width:991px){
+@media (min-width: 574px) and (max-width:991px){
   .chefs .team-member {
     border-radius: 100px;
   }
 
   .chefs .team-member .member-img {
-    height: 500px;
+    height: 550px;
     margin: 15px auto;
   }
   .chefs .team-member .member-img img{
+    height: 600px;
+    width: 100%;
+  }
+
+}
+
+@media (min-width: 429px) and (max-width:573px){
+  .chefs .team-member {
+    border-radius: 95px;
+  }
+
+  .chefs .team-member .member-img {
+    height: 450px;
+    margin: 15px auto;
+    border-radius: 20%;
+  }
+  .chefs .team-member .member-img img{
     height: 500px;
+    width: 100%;
+  }
+
+}
+
+@media (min-width: 0px) and (max-width:428px){
+  .chefs .team-member {
+    border-radius: 95px;
+  }
+
+  .chefs .team-member .member-img {
+    height: 300px;
+    margin: 25px auto;
+    border-radius: 25%;
+    width: 85%;
+  }
+  .chefs .team-member .member-img img{
+    height: 400px;
     width: 100%;
   }
 
