@@ -1579,9 +1579,11 @@ section,
   color: color-mix(in srgb, var(--default-color), transparent 30%);
 }
 
-.chefs .team-member:hover {
-  transform: scale(1.08);
-  box-shadow: 0px 0 30px rgba(0, 0, 0, 0.1);
+@media (min-width:992px){
+  .chefs .team-member:hover {
+    transform: scale(1.08);
+    box-shadow: 0px 0 30px rgba(0, 0, 0, 0.1);
+  }
 }
 
 .chefs .team-member:hover .social {
