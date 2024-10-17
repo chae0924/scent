@@ -453,16 +453,17 @@ const imageCount = 9; // 사용할 이미지 수
   
   function handleScroll() {
       const rect = inner2.getBoundingClientRect();
+      const viewportHeight = window.innerHeight * 0.5; // 뷰포트의 80% 높이
   
-      // 요소가 뷰포트에 들어올 때
-      if (rect.top < window.innerHeight && rect.bottom > 0) {
+      // 요소가 뷰포트의 80% 높이에 들어올 때
+      if (rect.top < viewportHeight && rect.bottom > 0) {
           // 이미 타이머가 설정되어 있으면 취소
           clearTimeout(animationTimeout);
   
           // 1초 후에 fixed 클래스 추가
           animationTimeout = setTimeout(() => {
               inner2.classList.add('fixed');
-          }, 300); // 300ms = 0.3초
+          }, 200); // 200ms = 0.2초
       } else {
           // 뷰포트를 벗어나면 클래스 제거 및 타이머 초기화
           inner2.classList.remove('fixed');
@@ -473,3 +474,52 @@ const imageCount = 9; // 사용할 이미지 수
   // 스크롤 이벤트 리스너 추가
   window.addEventListener('scroll', handleScroll);
   
+  
+
+
+  const images = [...document.querySelectorAll("#image-grid-section img")];
+const lerp = (a, b, n) => (1 - n) * a + n * b;
+const map = (x, a, b, c, d) => ((x - a) * (d - c)) / (b - a) + c;
+
+const getMousePosition = e => {
+    let posX = e.clientX;
+    let posY = e.clientY;
+    return { x: posX, y: posY };
+};
+
+let mousePos = { x: window.innerWidth / 2, y: window.innerHeight / 2 };
+window.addEventListener("mousemove", e => (mousePos = getMousePosition(e)));
+
+gsap.fromTo('#image-grid-section img', {
+    scale: 1.2,
+    autoAlpha: 0,
+    ease: 'power3.inOut',
+}, {
+    scale: 1,
+    autoAlpha: 1,
+    stagger: 0.1,
+    duration: 2.5,
+});
+
+images.forEach(img => {
+    let values = { x: 0, y: 0 };
+    const xStart = gsap.utils.random(16, 64);
+    const yStart = gsap.utils.random(-16, 64);
+
+    const render = () => {
+        values.x = lerp(
+            values.x,
+            map(mousePos.x, 0, window.innerWidth, -xStart, xStart),
+            0.07
+        );
+
+        values.y = lerp(
+            values.y,
+            map(mousePos.y, 0, window.innerHeight, -yStart, yStart),
+            0.07
+        );
+        gsap.set(img, { x: values.x, y: values.y });
+        requestAnimationFrame(render);
+    };
+    render();
+});
