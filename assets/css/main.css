@@ -997,8 +997,24 @@ section,
   font-weight: 500;
 }
 
-@media(max-width:860px){
+.wrap_company .section_ab p.mo {
+  display: block;
+}
+.wrap_company .section_ab p.mo {
+  display: none;
+}
 
+@media (max-width: 1023px) {
+  .wrap_company .section_ab p.mo {
+      display: block;
+    }
+    .wrap_company .section_ab p {
+    font-size: 17px;
+    line-height: 28px;
+    }
+    .wrap_company .section_ab p.pc {
+      display: none;
+    }
 }
 
 
@@ -1908,6 +1924,7 @@ h1 {
 --------------------------------------------------------------*/
 #testimonials{
   padding: 0;
+  height: auto;
 }
 
 .testimonials .testimonials-carousel,
@@ -2077,14 +2094,14 @@ h1 {
 }
 
  .mcon06 .swiper-pagination-bullet-active {
-  background-color: #009BDE !important;
+  background-color: #f395ab !important;
 }
 
  .mcon06 .swiper-pagination-bullet {
   width: 5px !important;
   height: 5px !important;
   margin: 0 5px !important;
-  border: 1px solid #009BDE !important;
+  border: 1px solid #999 !important;
   opacity: 1 !important;
   background-color: #fff;
 }
@@ -2093,14 +2110,14 @@ h1 {
    .mcon06 {
       width:100%;
       padding: 144px 0 80px;
-      background-color: #EEF8FF;
+      /* background-color: #EEF8FF; */
       margin-top: -50px
   }
 }
 
 @media (max-width: 1023px) {
    .mcon06 ul li {
-      padding-bottom:74px;
+      padding-bottom:5vh;
   }
 
    .mcon06 .swiper-pagination {
@@ -2135,7 +2152,7 @@ h1 {
 @media (max-width: 796px) {
   .testimonials .mcon06 {
       margin-top:-113px;
-      padding: 167px 0 54px;
+      padding: 10vh 0 54px;
   }
 
   .testimonials .mcon06 ul li h1 {

@@ -447,36 +447,44 @@ const imageCount = 9; // 사용할 이미지 수
     
 
         
+// about animation
+const inner2 = document.querySelector('.inner2');
+let animationTimeout; // 애니메이션 타이머를 저장할 변수
 
-  const inner2 = document.querySelector('.inner2');
-  let animationTimeout; // 애니메이션 타이머를 저장할 변수
-  
-  function handleScroll() {
-      const rect = inner2.getBoundingClientRect();
-      const viewportHeight = window.innerHeight * 0.5; // 뷰포트의 80% 높이
-  
-      // 요소가 뷰포트의 80% 높이에 들어올 때
-      if (rect.top < viewportHeight && rect.bottom > 0) {
-          // 이미 타이머가 설정되어 있으면 취소
-          clearTimeout(animationTimeout);
-  
-          // 1초 후에 fixed 클래스 추가
-          animationTimeout = setTimeout(() => {
-              inner2.classList.add('fixed');
-          }, 200); // 200ms = 0.2초
-      } else {
-          // 뷰포트를 벗어나면 클래스 제거 및 타이머 초기화
-          inner2.classList.remove('fixed');
-          clearTimeout(animationTimeout);
-      }
-  }
-  
-  // 스크롤 이벤트 리스너 추가
-  window.addEventListener('scroll', handleScroll);
-  
+function handleScroll() {
+    const rect = inner2.getBoundingClientRect();
+    const viewportHeight = window.innerHeight * 0.5; // 뷰포트의 50% 높이
+
+    // 모바일에서는 즉시 보이도록 설정
+    if (window.innerWidth <= 768) { // 예: 768px 이하에서 모바일로 간주
+        inner2.classList.add('fixed'); // fixed 클래스 추가
+    } else {
+        // 요소가 뷰포트의 50% 높이에 들어올 때
+        if (rect.top < viewportHeight && rect.bottom > 0) {
+            // 이미 타이머가 설정되어 있으면 취소
+            clearTimeout(animationTimeout);
+
+            // 100ms 후에 fixed 클래스 추가
+            animationTimeout = setTimeout(() => {
+                inner2.classList.add('fixed');
+            }, 100); // 100ms = 0.1초
+        } else {
+            // 뷰포트를 벗어나면 클래스 제거 및 타이머 초기화
+            inner2.classList.remove('fixed');
+            clearTimeout(animationTimeout);
+        }
+    }
+}
+
+// 스크롤 이벤트 리스너 추가
+window.addEventListener('scroll', handleScroll);
+
+// 페이지 로드 시 한번 handleScroll 호출 (초기화)
+handleScroll();
+
   
 
-
+//about image grid section
   const images = [...document.querySelectorAll("#image-grid-section img")];
 const lerp = (a, b, n) => (1 - n) * a + n * b;
 const map = (x, a, b, c, d) => ((x - a) * (d - c)) / (b - a) + c;

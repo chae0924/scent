@@ -3,145 +3,91 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Image Grid</title>
+    <title>부드러운 스크롤과 탑 버튼</title>
     <style>
-        * {
-            margin: 0 !important;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        @font-face {
-            src: url('https://assets.codepen.io/2479807/GrandSlang-Roman.otf');
-            font-family: 'Grand Slang';
-        }
-
         body {
-            display: grid;
-            place-items: center;
-            height: 100vh;
-            overflow-x: hidden;
-            font-family: 'Grand Slang';
-            background-color: white;
+            height: 300vh; /* 페이지를 길게 하여 스크롤 가능 */
+            margin: 0;
+            overflow: hidden; /* 스크롤바 숨기기 */
         }
 
-        h1 {
-            font-weight: 400;
-            font-size: 40px;
+        section {
+            height: 100vh; /* 각 섹션의 높이 설정 */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            border: 1px solid #000;
         }
 
-        .title {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            z-index: 3;
-            color: #000;
+        #section1 { background: #ffcccc; }
+        #section2 { background: #ccffcc; }
+        #section3 { background: #ccccff; }
+
+        /* 탑 버튼 스타일 */
+        .top-button {
+            position: fixed;
+            bottom: 20px; /* 화면 하단에서 20px */
+            right: 20px; /* 화면 오른쪽에서 20px */
+            padding: 10px 15px;
+            background-color: #f7acbc;
+            border: none;
+            border-radius: 5px;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+            display: none; /* 처음에는 숨김 */
+            transition: background-color 0.3s;
         }
 
-        .image-grid {
-            pointer-events: none;
-            position: absolute;
-            width: 110%;
-            height: 110%;
-            top: -5%;
-            left: -5%;
-            display: grid;
-            grid-template-columns: repeat(50, 2%);
-            grid-template-rows: repeat(50, 2%);
+        .top-button:hover {
+            background-color: #e62e51; /* 호버 시 색상 변경 */
         }
-
-        .image-grid__item {
-            opacity: 1;
-            position: relative;
-        }
-
-        .image-grid__item img {
-            will-change: transform;
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            opacity: 0;
-        }
-
-        /* 이미지 위치 설정 */
-        .pos-1 { grid-area: 10 / 1 / 36 / 8; }
-        .pos-2 { grid-area: 1 / 21 / 17 / 30; }
-        .pos-3 { grid-area: 1 / 36 / 14 / 42; }
-        .pos-4 { grid-area: 10 / 10 / 32 / 17; }
-        .pos-5 { grid-area: 20 / 35 / 35 / 45; }
-        .pos-6 { grid-area: 20 / 46 / 28 / 51; }
-        .pos-7 { grid-area: 43 / 1 / 51 / 10; }
-        .pos-8 { grid-area: 38 / 14 / 51 / 19; }
-        .pos-9 { grid-area: 40 / 26 / 51 / 32; }
-        .pos-10 { grid-area: 37 / 39 / 48 / 47; }
     </style>
 </head>
 <body>
-    <div class="title"><h1>Images</h1></div>
-    <div class="image-grid">
-        <div class="image-grid__item pos-1"><img src="https://via.placeholder.com/150" alt=""></div>
-        <div class="image-grid__item pos-2"><img src="https://via.placeholder.com/150" alt=""></div>
-        <div class="image-grid__item pos-3"><img src="https://via.placeholder.com/150" alt=""></div>
-        <div class="image-grid__item pos-4"><img src="https://via.placeholder.com/150" alt=""></div>
-        <div class="image-grid__item pos-5"><img src="https://via.placeholder.com/150" alt=""></div>
-        <div class="image-grid__item pos-6"><img src="https://via.placeholder.com/150" alt=""></div>
-        <div class="image-grid__item pos-7"><img src="https://via.placeholder.com/150" alt=""></div>
-        <div class="image-grid__item pos-8"><img src="https://via.placeholder.com/150" alt=""></div>
-        <div class="image-grid__item pos-9"><img src="https://via.placeholder.com/150" alt=""></div>
-        <div class="image-grid__item pos-10"><img src="https://via.placeholder.com/150" alt=""></div>
-    </div>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"></script>
-    <script>
-        const images = [...document.querySelectorAll("img")];
-        const lerp = (a, b, n) => (1 - n) * a + n * b;
-        const map = (x, a, b, c, d) => ((x - a) * (d - c)) / (b - a) + c;
 
-        const getMousePosition = e => {
-            let posX = e.clientX;
-            let posY = e.clientY;
-            return { x: posX, y: posY };
-        };
+<section id="section1">첫 번째 섹션</section>
+<section id="section2">두 번째 섹션</section>
+<section id="section3">세 번째 섹션</section>
 
-        let mousePos = { x: window.innerWidth / 2, y: window.innerHeight / 2 };
-        window.addEventListener("mousemove", e => (mousePos = getMousePosition(e)));
+<!-- 탑 버튼 추가 -->
+<button id="topBtn" class="top-button">↑ 상단으로</button>
 
-        gsap.fromTo('img', {
-            scale: 1.2,
-            autoAlpha: 0,
-            ease: 'power3.inOut',
-        }, {
-            scale: 1,
-            autoAlpha: 1,
-            stagger: 0.1,
-            duration: 2.5,
-        });
+<script>
+    let currentSection = 0; // 현재 섹션을 추적
+    const sections = document.querySelectorAll('section'); // 모든 섹션 선택
+    const topBtn = document.getElementById('topBtn'); // 탑 버튼
 
-        images.forEach(img => {
-            let values = { x: 0, y: 0 };
-            const xStart = gsap.utils.random(16, 64);
-            const yStart = gsap.utils.random(-16, 64);
+    // 스크롤 이벤트 리스너 추가
+    window.addEventListener('wheel', (event) => {
+        event.preventDefault(); // 기본 스크롤 방지
+        if (event.deltaY > 0) { // 아래로 스크롤할 때
+            if (currentSection < sections.length - 1) {
+                currentSection++; // 다음 섹션으로 이동
+            }
+        } else { // 위로 스크롤할 때
+            if (currentSection > 0) {
+                currentSection--; // 이전 섹션으로 이동
+            }
+        }
+        // 해당 섹션으로 부드럽게 스크롤 이동
+        sections[currentSection].scrollIntoView({ behavior: 'smooth' });
 
-            const render = () => {
-                values.x = lerp(
-                    values.x,
-                    map(mousePos.x, 0, window.innerWidth, -xStart, xStart),
-                    0.07
-                );
+        // 탑 버튼 표시/숨기기
+        if (currentSection > 0) {
+            topBtn.style.display = 'block'; // 탑 버튼 표시
+        } else {
+            topBtn.style.display = 'none'; // 탑 버튼 숨김
+        }
+    });
 
-                values.y = lerp(
-                    values.y,
-                    map(mousePos.y, 0, window.innerHeight, -yStart, yStart),
-                    0.07
-                );
-                gsap.set(img, { x: values.x, y: values.y });
-                requestAnimationFrame(render);
-            };
-            render();
-        });
-    </script>
+    // 탑 버튼 클릭 시 상단으로 부드럽게 스크롤
+    topBtn.addEventListener('click', () => {
+        sections[0].scrollIntoView({ behavior: 'smooth' }); // 상단으로 이동
+        currentSection = 0; // 현재 섹션을 첫 번째 섹션으로 초기화
+    });
+</script>
+
 </body>
 </html>
