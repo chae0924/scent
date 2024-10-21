@@ -1656,45 +1656,64 @@ section,
   font-family: 'Grand Slang';
 }
 
-
-
+/* 섹션 기본 설정 */
 #image-grid-section {
+  position: relative;
   display: grid;
   place-items: center;
-  height: 100vh;
-  overflow-x: hidden;
-  font-family: 'Grand Slang';
+  height: 110vh;
   background-color: white;
-  position: relative;
+  overflow: hidden;
+  font-family: 'Grand Slang';
 }
 
-#image-grid-section {
-  display: none; /* 기본적으로 숨김 */
+/* 섹션의 가상 요소 생성 */
+#image-grid-section .bg_ani {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  background-color: #f7acbc;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  transition: width 0.5s ease, height 0.5s ease;
+  z-index: 0; /* 배경이 글자 뒤로 가도록 설정 */
 }
 
-@media (min-width: 992px) {
-  #image-grid-section {
-    display: block; /* lg 이상일 때 보임 */
-  }
+/* h1에 호버했을 때 배경을 확장 */
+#image-grid-section .title:hover + .image-grid + .bg_ani {
+  width: 300vw !important;
+  height: 300vh !important;
 }
 
-h1 {
-  font-weight: 400;
-  font-size: 40px;
-}
-
+/* 텍스트 스타일 */
 .title {
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  z-index: 3;
-  color: #000;
+  z-index: 8; /* 텍스트는 배경 위로 보이도록 설정 */
 }
 
+.title h1 {
+  font-weight: 300;
+  font-size: 40px;
+  font-family: 'Pretendard';
+  cursor: pointer;
+  font-style: italic;
+}
+
+/* a 태그에 호버했을 때 텍스트 스타일 */
+.title:hover a h1 {
+  color: white;
+  text-decoration: underline;
+}
+
+/* 이미지 그리드 설정 */
 .image-grid {
   pointer-events: none;
-  position: relative; /* 변경: absolute에서 relative로 */
+  position: relative;
   width: 110%;
   height: 110%;
   top: -5%;
@@ -1702,6 +1721,7 @@ h1 {
   display: grid;
   grid-template-columns: repeat(50, 2%);
   grid-template-rows: repeat(50, 2%);
+  z-index: 99;
 }
 
 .image-grid__item {
@@ -1714,23 +1734,24 @@ h1 {
   position: absolute;
   top: 0;
   left: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
+  width: 120%;
+  height: 120%;
+  object-fit: contain;
   opacity: 0;
 }
 
 /* 이미지 위치 설정 */
-.pos-1 { grid-area: 10 / 1 / 36 / 8; }
+.pos-1 { grid-area: 5 / 1 / 22 / 18; }
 .pos-2 { grid-area: 1 / 21 / 17 / 30; }
 .pos-3 { grid-area: 1 / 36 / 14 / 42; }
-.pos-4 { grid-area: 10 / 10 / 32 / 17; }
+.pos-4 { grid-area: 11 / 5 / 31 / 23; }
 .pos-5 { grid-area: 20 / 35 / 35 / 45; }
 .pos-6 { grid-area: 20 / 46 / 28 / 51; }
-.pos-7 { grid-area: 43 / 1 / 51 / 10; }
+.pos-7 { grid-area: 30 / 1 / 40 / 15; }
 .pos-8 { grid-area: 38 / 14 / 51 / 19; }
-.pos-9 { grid-area: 40 / 26 / 51 / 32; }
-.pos-10 { grid-area: 37 / 39 / 48 / 47; }
+.pos-9 { grid-area: 32 / 29 / 41 / 42; }
+.pos-10 { grid-area: 37 / 39 / 55 / 47; }
+
 /*--------------------------------------------------------------
 # Stats Section
 --------------------------------------------------------------*/
