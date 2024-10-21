@@ -179,6 +179,23 @@
 })();
 
 
+/* Cart-btn */
+// 장바구니 아이콘 클릭 시 드롭다운 토글
+const cartToggle = document.getElementById('cart-toggle');
+const cartContainer = document.querySelector('.cart-container');
+
+cartToggle.addEventListener('click', (e) => {
+    e.stopPropagation(); // 스크롤 이벤트 방지
+    cartContainer.classList.toggle('open');
+});
+
+// 클릭 시 드롭다운 외부를 클릭하면 닫기
+document.addEventListener('click', () => {
+    cartContainer.classList.remove('open');
+});
+
+
+
 
 
 
@@ -204,145 +221,71 @@ document.addEventListener("DOMContentLoaded", function() {
 
 
 
-// shopSwiper
-        const shopSwiper = new Swiper('#shopSwiper .swiper-container', {
-            slidesPerView: 3, // 한 번에 보여줄 슬라이드 수
-            spaceBetween: 30, // 슬라이드 간 간격
-            centeredSlides: false, // 가운데 모드
-            loop: true, // 반복
-           loopedSlides: 9, // 슬라이드 수
-            autoplay: { // 자동 슬라이드
-                delay: 3000, // 슬라이드 전환 간격 (밀리초)
-                disableOnInteraction: false, // 사용자 인터랙션 후에도 자동 재생 유지
-            },
-            pagination: { // 페이지네이션
-                el: '.shop-swiper-pagination',
-                clickable: true,
-            },
-            navigation: { // 네비게이션
-                nextEl: '#shopSwiper .swiper-button-next',
-                prevEl: '#shopSwiper .swiper-button-prev',
-            },
-            breakpoints: {
-            // 모바일 사이즈
-            0: {
-                slidesPerView: 1, // 모바일에서 보여줄 슬라이드 수
-            },
-            // 태블릿 사이즈
-            768: {
-                slidesPerView: 2, // 태블릿에서 보여줄 슬라이드 수
-            },
-            // 기본 (데스크탑) 사이즈
-            1024: {
-                slidesPerView: 3, // 데스크탑에서 보여줄 슬라이드 수
-            },
-          },
-        });
-
-// bestSwiper
-const bestSwiper = new Swiper('#bestSwiper .swiper-container', {
-  slidesPerView: 3, // 한 번에 보여줄 슬라이드 수
-  spaceBetween: 30, // 슬라이드 간 간격
-  centeredSlides: false, // 가운데 모드
-  loop: true, // 반복
-  loopedSlides: 5, // 슬라이드 수
-  autoplay: { // 자동 슬라이드
+// Swiper 초기화 함수
+const initSwiper = (swiperId, paginationClass, loopedSlides) => {
+  return new Swiper(`#${swiperId} .swiper-container`, {
+    slidesPerView: 3, // 한 번에 보여줄 슬라이드 수
+    spaceBetween: 30, // 슬라이드 간 간격
+    centeredSlides: false, // 가운데 모드
+    loop: true, // 반복
+    loopedSlides: loopedSlides, // 슬라이드 수
+    autoplay: { // 자동 슬라이드
       delay: 3000, // 슬라이드 전환 간격 (밀리초)
       disableOnInteraction: false, // 사용자 인터랙션 후에도 자동 재생 유지
-  },
-  pagination: { // 페이지네이션
-      el: '.best-swiper-pagination',
+    },
+    pagination: { // 페이지네이션
+      el: `.${paginationClass}`,
       clickable: true,
-  },
-  navigation: { // 네비게이션
-      nextEl: '#bestSwiper .swiper-button-next',
-      prevEl: '#bestSwiper .swiper-button-prev',
-  },
-  breakpoints: {
-   // 모바일 사이즈
-   0: {
-       slidesPerView: 1, // 모바일에서 보여줄 슬라이드 수
-   },
-   // 태블릿 사이즈
-   768: {
-       slidesPerView: 2, // 태블릿에서 보여줄 슬라이드 수
-   },
-   // 기본 (데스크탑) 사이즈
-   1024: {
-       slidesPerView: 3, // 데스크탑에서 보여줄 슬라이드 수
-   },
- },
-});
+    },
+    navigation: { // 네비게이션
+      nextEl: `#${swiperId} .swiper-button-next`,
+      prevEl: `#${swiperId} .swiper-button-prev`,
+    },
+    breakpoints: {
+      // 모바일 사이즈
+      0: {
+        slidesPerView: 1, // 모바일에서 보여줄 슬라이드 수
+      },
+      // 태블릿 사이즈
+      768: {
+        slidesPerView: 2, // 태블릿에서 보여줄 슬라이드 수
+      },
+      // 기본 (데스크탑) 사이즈
+      1024: {
+        slidesPerView: 3, // 데스크탑에서 보여줄 슬라이드 수
+      },
+    },
+  });
+};
 
-// newSwiper
-const newSwiper = new Swiper('#newSwiper .swiper-container', {
-  slidesPerView: 3, // 한 번에 보여줄 슬라이드 수
-  spaceBetween: 30, // 슬라이드 간 간격
-  // centeredSlides: false, // 가운데 모드
-  loop: true, // 반복
- //  loopedSlides: 3, // 슬라이드 수
-  autoplay: { // 자동 슬라이드
-      delay: 3000, // 슬라이드 전환 간격 (밀리초)
-      disableOnInteraction: false, // 사용자 인터랙션 후에도 자동 재생 유지
-  },
-  pagination: { // 페이지네이션
-      el: '.new-swiper-pagination',
-      clickable: true,
-  },
-  navigation: { // 네비게이션
-      nextEl: '#newSwiper .swiper-button-next',
-      prevEl: '#newSwiper .swiper-button-prev',
-  },
-  breakpoints: {
-   // 모바일 사이즈
-   0: {
-       slidesPerView: 1, // 모바일에서 보여줄 슬라이드 수
-   },
-   // 태블릿 사이즈
-   768: {
-       slidesPerView: 2, // 태블릿에서 보여줄 슬라이드 수
-   },
-   // 기본 (데스크탑) 사이즈
-   1024: {
-       slidesPerView: 3, // 데스크탑에서 보여줄 슬라이드 수
-   },
- },
-});
+// Swiper 초기화를 위한 Intersection Observer 설정
+const observeSwiper = (swiperId, paginationClass, loopedSlides) => {
+  const swiperContainer = document.getElementById(swiperId);
+  
+  const options = {
+    root: null, // viewport를 root로 설정
+    rootMargin: '0px',
+    threshold: 0.1 // 10%가 보일 때 실행
+  };
 
-// saleSwiper
-const saleSwiper = new Swiper('#saleSwiper .swiper-container', {
-  slidesPerView: 3, // 한 번에 보여줄 슬라이드 수
-  spaceBetween: 30, // 슬라이드 간 간격
-  centeredSlides: false, // 가운데 모드
-  loop: true, // 반복
-  loopedSlides: 4, // 슬라이드 수
-  autoplay: { // 자동 슬라이드
-      delay: 3000, // 슬라이드 전환 간격 (밀리초)
-      disableOnInteraction: false, // 사용자 인터랙션 후에도 자동 재생 유지
-  },
-  pagination: { // 페이지네이션
-      el: '.sale-swiper-pagination',
-      clickable: true,
-  },
-  navigation: { // 네비게이션
-      nextEl: '#saleSwiper .swiper-button-next',
-      prevEl: '#saleSwiper .swiper-button-prev',
-  },
-  breakpoints: {
-   // 모바일 사이즈
-   0: {
-       slidesPerView: 1, // 모바일에서 보여줄 슬라이드 수
-   },
-   // 태블릿 사이즈
-   768: {
-       slidesPerView: 2, // 태블릿에서 보여줄 슬라이드 수
-   },
-   // 기본 (데스크탑) 사이즈
-   1024: {
-       slidesPerView: 3, // 데스크탑에서 보여줄 슬라이드 수
-   },
- },
-});
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        initSwiper(swiperId, paginationClass, loopedSlides); // 요소가 보일 때 Swiper 초기화
+        observer.unobserve(entry.target); // 옵저버에서 제거 (한 번만 실행)
+      }
+    });
+  }, options);
+
+  observer.observe(swiperContainer); // 스와이퍼 컨테이너 관찰 시작
+};
+
+// 각 Swiper 초기화 관찰 설정
+observeSwiper('shopSwiper', 'shop-swiper-pagination', 9);
+observeSwiper('bestSwiper', 'best-swiper-pagination', 5);
+observeSwiper('newSwiper', 'new-swiper-pagination', 3);
+observeSwiper('saleSwiper', 'sale-swiper-pagination', 4);
+
 
 
 // hero section img random
@@ -419,29 +362,6 @@ const imageCount = 9; // 사용할 이미지 수
         document.getElementById('contact').scrollIntoView({ behavior: 'smooth' });
         document.querySelector('input[name="pick"][value="citrus"]').checked = true;
       });
-
-      
-      //review swiper
-  document.addEventListener("DOMContentLoaded", function() {
-    // Swiper initialization
-    const swiper = new Swiper('.mcon06 .swiper-container', {
-      loop: true, // 무한 스크롤
-      navigation: {
-        nextEl: '.swiper-button-next', // 다음 버튼
-        prevEl: '.swiper-button-prev', // 이전 버튼
-      },
-      pagination: {
-        el: '.swiper-pagination', // 페이지네이션 요소
-        clickable: true, // 페이지네이션 클릭 활성화
-      },
-      autoplay: {
-        delay: 5000, // 3초 간격으로 자동 슬라이드
-        disableOnInteraction: false, // 사용자 상호작용 후에도 자동 슬라이드 유지
-      },
-      speed: 800, // 슬라이드 애니메이션 속도 (밀리초)
-    });
-  });
-
 
 
     
@@ -530,4 +450,49 @@ images.forEach(img => {
         requestAnimationFrame(render);
     };
     render();
+});
+
+
+// review swiper
+document.addEventListener("DOMContentLoaded", function() {
+  const swiperContainer = document.querySelector('.mcon06 .swiper-container');
+
+  // Swiper 초기화 함수
+  const initSwiper = () => {
+    const swiper = new Swiper(swiperContainer, {
+      loop: true, // 무한 스크롤
+      navigation: {
+        nextEl: '.swiper-button-next', // 다음 버튼
+        prevEl: '.swiper-button-prev', // 이전 버튼
+      },
+      pagination: {
+        el: '.swiper-pagination', // 페이지네이션 요소
+        clickable: true, // 페이지네이션 클릭 활성화
+      },
+      autoplay: {
+        delay: 5000, // 5초 간격으로 자동 슬라이드
+        disableOnInteraction: false, // 사용자 상호작용 후에도 자동 슬라이드 유지
+      },
+      speed: 800, // 슬라이드 애니메이션 속도 (밀리초)
+    });
+  };
+
+  // 스와이퍼 초기화를 위한 Intersection Observer 설정
+  const options = {
+    root: null, // viewport를 root로 설정
+    rootMargin: '0px',
+    threshold: 0.1 // 10%가 보일 때 실행
+  };
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        initSwiper(); // 요소가 보일 때 Swiper 초기화
+        observer.unobserve(entry.target); // 옵저버에서 제거 (한 번만 실행)
+      }
+    });
+  }, options);
+
+  // 관찰할 요소 선택
+  observer.observe(swiperContainer); // 스와이퍼 컨테이너 관찰 시작
 });

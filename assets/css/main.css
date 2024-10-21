@@ -698,6 +698,122 @@ h6 {
 }
 
 /*--------------------------------------------------------------
+# cart
+--------------------------------------------------------------*/
+.scroll-top {
+  position: fixed;
+  visibility: hidden;
+  opacity: 0;
+  right: 15px;
+  bottom: 15px; /* 수정: 탑버튼 위치 조정 */
+  z-index: 99999;
+  background-color: var(--accent-color);
+  width: 44px;
+  height: 44px;
+  border-radius: 50px;
+  transition: all 0.4s;
+}
+
+.scroll-top i {
+  font-size: 24px;
+  color: var(--contrast-color);
+  line-height: 0;
+}
+
+.scroll-top:hover {
+  background-color: color-mix(in srgb, var(--accent-color), transparent 20%);
+  color: var(--contrast-color);
+}
+
+.scroll-top.active {
+  visibility: visible;
+  opacity: 1;
+  bottom: 15px;
+}
+
+/* 장바구니 스타일 */
+.cart-container {
+  position: fixed;
+  right: 15px;
+  bottom: 70px; /* 탑버튼과의 간격 */
+  z-index: 9999;
+  text-align: center;
+}
+
+.cart-icon {
+  background-color: var(--accent-color);
+  width: 44px; /* 아이콘 너비 */
+  height: 44px; /* 아이콘 높이 */
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  position: relative;
+  transition: height 0.4s ease;
+  z-index: 99;
+}
+
+.item-count {
+  position: absolute;
+  top: -5px; /* 아이콘 위에 수 표시 */
+  right: -5px; /* 아이콘 오른쪽에 수 표시 */
+  background-color: red; /* 수량 배경색 */
+  color: white; /* 수량 텍스트 색상 */
+  border-radius: 80%;
+  width: 20px; /* 수량 배경 너비 */
+  height: 20px; /* 수량 배경 높이 */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  z-index: 98;
+}
+
+.cart-dropdown {
+  position: absolute;
+  right: 0;
+  bottom: 1px; /* 아이콘 위쪽에 위치 */
+  width: 44px; /* 아이콘 너비와 동일하게 */
+  background-color: white; /* 배경색 */
+  border: none;
+  border-radius: 50px;
+  height: 0; /* 초기 높이 0 */
+  overflow: hidden; /* 내용이 넘칠 경우 숨김 */
+  transition: height 0.4s ease, border 0.4s, opacity 0.4s ease; /* opacity 추가 */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  opacity: 0; /* 초기 투명도 0 */
+  visibility: hidden; /* 초기 상태에서 숨김 */
+}
+
+.cart-dropdown .item {
+  padding: 10px;
+  text-align: center;
+}
+
+/* 장바구니 아이콘 클릭 시 드롭다운 열기 */
+.cart-container.open .cart-dropdown {
+  height: 150px; /* 열릴 때 높이 설정 */
+  border: 1px solid var(--accent-color);
+  opacity: 1; /* 열릴 때 보이도록 설정 */
+  visibility: visible; /* 보이도록 설정 */
+}
+
+/* 드롭다운 아이템을 표시하도록 변경 */
+.cart-container.open .cart-dropdown .item {
+  opacity: 1; /* 아이템이 나타날 때 보이도록 설정 */
+  transition: opacity 0.4s ease; /* 아이템 투명도 조절 */
+}
+
+/* 기본 상태에서 숨기기 */
+.cart-dropdown .item {
+  opacity: 0; /* 기본 상태에서 숨김 */
+  transition: opacity 0.4s ease; /* 부드러운 전환 추가 */
+}
+
+
+
+/*--------------------------------------------------------------
 # Disable aos animation delay on mobile devices
 --------------------------------------------------------------*/
 @media screen and (max-width: 768px) {
@@ -1656,6 +1772,16 @@ section,
   font-family: 'Grand Slang';
 }
 
+#image-grid-section {
+  display: none; /* 기본적으로 숨김 */
+}
+
+@media (min-width: 1200px) {
+  #image-grid-section {
+    display: block; /* lg 이상일 때 보임 */
+  }
+}
+
 /* 섹션 기본 설정 */
 #image-grid-section {
   position: relative;
@@ -1763,14 +1889,15 @@ section,
   padding: 120px 0;
   background: url(../../bby/img/stats_bg_img.jpg) no-repeat center center; /* 배경을 중앙 정렬 */
   background-attachment: fixed; /* 배경을 고정 */
-  width: 100%;
+  width: 100vw;
   background-size: cover; /* 배경을 커버 모드로 설정 */
-  height: 600px;
+  height: 100vh;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 1200px) {
   .stats  {
       background-attachment: scroll; /* 모바일에서 스크롤 가능 */
+      background-size: auto 100%;
   }
 }
 
@@ -2305,9 +2432,9 @@ section,
 .testimonials .swiper-button-next,.swiper-button-prev {
   position: absolute;
   top: 50%;
-  width: 27px !important;
-  height: 44px !important;
-  margin-top: -22px;
+  width: 37px !important;
+  height: 54px !important;
+  margin-top: -26px;
   z-index: 10;
   cursor: pointer;
   background-size: 27px 44px;
@@ -2526,7 +2653,7 @@ section,
 
 .chefs .team-member .member-info p {
   /* font-style: italic; */
-  font-size: 14px;
+  font-size: 16px;
   padding-top: 15px;
   line-height: 26px;
   color: color-mix(in srgb, var(--default-color), transparent 30%);
@@ -2977,7 +3104,7 @@ label:not(.form-check){
 }
 
 /* lg 크기 이상에서만 호버 시에 보이도록 설정 */
-@media (min-width: 992px) {
+@media (min-width: 1000px) {
     .hoverSwiper:hover .swiper-button-next,
     .hoverSwiper:hover .swiper-button-prev {
         opacity: 1; /* 호버 시에 보이도록 설정 */
@@ -3036,6 +3163,7 @@ label:not(.form-check){
 }
 
 .shopSection .swiper-button-next, .swiper-rtl .swiper-button-prev {
-  left: 98%;
+  left: 97.5%;
   right: 98%;
 }
+
