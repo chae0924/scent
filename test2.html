@@ -3,67 +3,64 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>애니메이션 효과</title>
+    <title>텍스트 내부 색상 효과</title>
     <style>
-        /* 감싸고 있는 섹션 스타일 */
-        section {
-            position: relative;
+        body {
+            margin: 0;
+            background-color: #222;
+            color: white;
+            font-family: Arial, sans-serif;
             display: flex;
             justify-content: center;
             align-items: center;
             height: 100vh;
-            background-color: white;
-            overflow: hidden;
         }
-
-        /* 배경이 동그랗게 채워지는 효과를 위한 section의 ::before */
-        section::before {
-            content: "";
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            width: 0;
-            height: 0;
-            background-color: #f7acbc;
-            border-radius: 50%;
-            transition: width 0.5s ease-in, height 0.5s ease-in, top 0.5s ease-in, left 0.5s ease-in;
-            z-index: 1;
-            transform: translate(-50%, -50%);
-        }
-
-        /* a 태그 안의 h1 */
-        a {
-            text-decoration: none;
-        }
-
         h1 {
-            font-size: 40px;
-            font-family: 'Arial', sans-serif;
-            color: black;
-            z-index: 1; /* 텍스트가 배경 위에 있게 */
-            transition: color 0.3s;
+            position: relative;
+            font-size: 4rem;
+            overflow: hidden; /* 텍스트 바깥 부분 숨김 */
         }
-
-        /* h1에 호버할 때 section의 배경색을 동그랗게 채우기 */
-        a:hover ~ section::before {
-            width: 300%;
-            /* !!!!! 중요! 비포는 0으로 되어있는데 거기에 300프로를 할 수없어 300vw|300vh로 수정 */
-            height: 300%;
-        }
-
-        /* 호버 시 텍스트 색상 변화 */
-        a:hover h1 {
-            color: white;
+        .color-overlay {
+            position: absolute;
+            pointer-events: none; /* 마우스 이벤트를 받지 않게 */
+            z-index: -1; /* 텍스트 뒤에 배치 */
+            width: 100%; /* 전체 너비 */
+            height: 100%; /* 전체 높이 */
+            top: 0; /* 상단 맞춤 */
+            left: 0; /* 좌측 맞춤 */
+            mix-blend-mode: multiply; /* 색상 혼합 모드 */
+            transition: opacity 0.3s ease; /* 부드러운 전환 */
+            opacity: 0; /* 초기 투명도 */
         }
     </style>
 </head>
 <body>
 
-<a href="#">
-    <h1>호버해보세요</h1>
-</a>
+<h1 id="text">향수처럼 흩어지는 텍스트</h1>
+<div class="color-overlay" id="color-overlay"></div>
 
-<section></section>
+<script>
+    const textElement = document.getElementById('text');
+    const colorOverlay = document.getElementById('color-overlay');
 
+    textElement.addEventListener('mousemove', (e) => {
+        const rect = textElement.getBoundingClientRect();
+        const x = e.clientX - rect.left; // 텍스트 내부의 X 좌표
+        const y = e.clientY - rect.top; // 텍스트 내부의 Y 좌표
+
+        // 색상 설정 (마우스 위치에 따라 변화)
+        colorOverlay.style.backgroundColor = `rgba(255, 255, 0, 0.5)`; // 노란색
+        colorOverlay.style.opacity = 1; // 불투명하게
+
+        // 마우스 위치에 따라 색상이 드러나도록 합니다
+        const gradientX = Math.round((x / rect.width) * 100); // X 축 위치 비율
+        const gradientY = Math.round((y / rect.height) * 100); // Y 축 위치 비율
+        colorOverlay.style.background = `radial-gradient(circle at ${gradientX}% ${gradientY}%, rgba(255, 255, 0, 0.5), rgba(0, 0, 0, 0))`;
+    });
+
+    textElement.addEventListener('mouseleave', () => {
+        colorOverlay.style.opacity = 0; // 마우스가 벗어났을 때 투명하게
+    });
+</script>
 </body>
 </html>

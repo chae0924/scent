@@ -67,12 +67,56 @@
 /*--------------------------------------------------------------
 # General Styling & Shared Classes
 --------------------------------------------------------------*/
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   color: var(--default-color);
   background-color: var(--background-color);
   font-family: var(--default-font);
   overflow-x: hidden; /* 가로 스크롤 숨기기 */
 }
+
+/* 텍스트 선택 색상 변경 */
+::selection {
+  background-color: #f7acbc90; /* 선택된 텍스트 배경색 */
+  color: #555; /* 선택된 텍스트 글자색 */
+}
+
+/* 비슷한 선택 색상을 모든 브라우저에서 적용하기 위해 */
+::-moz-selection {
+  background-color: #f7acbc90; /* Firefox에서 선택된 텍스트 배경색 */
+  color: #555; /* Firefox에서 선택된 텍스트 글자색 */
+}
+
+/* 전체 페이지 스크롤바 스타일 */
+::-webkit-scrollbar {
+  width: 8px; /* 스크롤바의 너비 */
+  height: 8px; /* 가로 스크롤바의 높이 */
+}
+
+/* 스크롤바 트랙 (스크롤바의 배경) */
+::-webkit-scrollbar-track {
+  background: #dddddd; /* 트랙 배경색 */
+}
+
+/* 스크롤바의 손잡이 (스크롤바를 움직이는 부분) */
+::-webkit-scrollbar-thumb {
+  background: #f7acbc; /* 손잡이 색상 */
+  border-radius: 10px; /* 둥근 모서리 */
+}
+
+/* 손잡이를 hover했을 때 */
+::-webkit-scrollbar-thumb:hover {
+  background: #e69ab1; /* hover시 색상 */
+}
+
+/* 스크롤바의 각도 (세로 스크롤과 가로 스크롤) */
+::-webkit-scrollbar-corner {
+  background: transparent; /* 가로와 세로 스크롤이 만나는 모서리 */
+}
+
 
 a {
   color: var(--accent-color);
@@ -93,6 +137,12 @@ h5,
 h6 {
   color: var(--heading-color);
   font-family: var(--heading-font);
+}
+
+@media (min-width: 2100px) {
+  .container, .container-lg, .container-md, .container-sm, .container-xl, .container-xxl {
+      max-width: 1920px;
+  }
 }
 
 /* Pulsating Play Button
@@ -697,6 +747,11 @@ h6 {
   bottom: 15px;
 }
 
+.scroll-top +.cart-container{
+bottom:13px;
+transition: all 0.4s;
+}
+
 /*--------------------------------------------------------------
 # cart
 --------------------------------------------------------------*/
@@ -738,7 +793,19 @@ h6 {
   bottom: 70px; /* 탑버튼과의 간격 */
   z-index: 9999;
   text-align: center;
+  border-radius: 50%;
+  background-color: var(--accent-color);
 }
+
+.scroll-top.active +.cart-container{
+  bottom:70px;
+  transition: all 0.4s;
+  }
+
+  .cart-container:hover {
+    background-color: color-mix(in srgb, var(--accent-color), transparent 20%);
+    color: var(--contrast-color);
+  }
 
 .cart-icon {
   background-color: var(--accent-color);
@@ -754,11 +821,15 @@ h6 {
   z-index: 99;
 }
 
+.cart-icon i{
+  color:white;
+}
+
 .item-count {
   position: absolute;
   top: -5px; /* 아이콘 위에 수 표시 */
   right: -5px; /* 아이콘 오른쪽에 수 표시 */
-  background-color: red; /* 수량 배경색 */
+  background-color: #37373f; /* 수량 배경색 */
   color: white; /* 수량 텍스트 색상 */
   border-radius: 80%;
   width: 20px; /* 수량 배경 너비 */
@@ -784,6 +855,7 @@ h6 {
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
   opacity: 0; /* 초기 투명도 0 */
   visibility: hidden; /* 초기 상태에서 숨김 */
+  z-index: 9;
 }
 
 .cart-dropdown .item {
@@ -921,7 +993,7 @@ section,
 # Hero Section
 --------------------------------------------------------------*/
 .hero {
-  width: 100%;
+  width: 100vw;
   min-height: 60vh;
   height: 100vh;
   position: relative;
@@ -929,7 +1001,7 @@ section,
   display: flex;
   align-items: center;
   background: url(../../bby/img/hero_bg.jpg) no-repeat center center;
-  /* background-size:cover; */
+  background-size:cover;
 }
 
 @media (max-width:1200px){
@@ -1082,7 +1154,7 @@ section,
 
 .wrap_company {
   position: relative;
-  width: 100%;
+  width: 100vw;
   height: 100vh;
   margin-bottom: 5vh;
 }
@@ -1787,10 +1859,12 @@ section,
   position: relative;
   display: grid;
   place-items: center;
-  height: 110vh;
+  height: 140vh;
   background-color: white;
   overflow: hidden;
   font-family: 'Grand Slang';
+  width: 100vw;
+  margin: 500px 0;
 }
 
 /* 섹션의 가상 요소 생성 */
@@ -1800,7 +1874,7 @@ section,
   left: 50%;
   width: 0;
   height: 0;
-  background-color: #f7acbc;
+  background-color: #f7acbc90;
   border-radius: 50%;
   transform: translate(-50%, -50%);
   transition: width 0.5s ease, height 0.5s ease;
@@ -1825,7 +1899,7 @@ section,
 .title h1 {
   font-weight: 300;
   font-size: 40px;
-  font-family: 'Pretendard';
+  font-family: 'HD';
   cursor: pointer;
   font-style: italic;
 }
@@ -1833,7 +1907,6 @@ section,
 /* a 태그에 호버했을 때 텍스트 스타일 */
 .title:hover a h1 {
   color: white;
-  text-decoration: underline;
 }
 
 /* 이미지 그리드 설정 */
@@ -1867,10 +1940,10 @@ section,
 }
 
 /* 이미지 위치 설정 */
-.pos-1 { grid-area: 5 / 1 / 22 / 18; }
-.pos-2 { grid-area: 1 / 21 / 17 / 30; }
+.pos-1 { grid-area: 10 / 1 / 22 / 18; }
+.pos-2 { grid-area: 1 / 21 / 14 / 30; }
 .pos-3 { grid-area: 1 / 36 / 14 / 42; }
-.pos-4 { grid-area: 11 / 5 / 31 / 23; }
+.pos-4 { grid-area: 18 / 5 / 34 / 23; }
 .pos-5 { grid-area: 20 / 35 / 35 / 45; }
 .pos-6 { grid-area: 20 / 46 / 28 / 51; }
 .pos-7 { grid-area: 30 / 1 / 40 / 15; }
@@ -2519,6 +2592,10 @@ section,
   scroll-margin-top: 15px !important;
 }
 
+.pick-box{
+  margin: 0 auto;
+}
+
 .chefs .team-member {
   background-color: var(--surface-color);
   box-shadow: 0px 0 30px rgba(0, 0, 0, 0.1);
@@ -2526,6 +2603,8 @@ section,
   text-align: center;
   border-radius: 75px;
   transition: 0.3s;
+  max-width: 450px;
+  margin: 0 auto;
 }
 
 @media (min-width:1200px) and (max-width:1400px){
