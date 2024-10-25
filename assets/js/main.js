@@ -73,6 +73,73 @@
   }
 
   /**
+   * popup
+   */
+// 쿠키 설정 함수
+function setCookie(name, value, days) {
+  const date = new Date();
+  date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000)); // days 일 수 만큼 쿠키 설정
+  const expires = "expires=" + date.toUTCString();
+  document.cookie = name + "=" + value + ";" + expires + ";path=/";
+}
+
+// 쿠키 가져오기 함수
+function getCookie(name) {
+  const nameEQ = name + "=";
+  const ca = document.cookie.split(';');
+  for (let i = 0; i < ca.length; i++) {
+      let c = ca[i];
+      while (c.charAt(0) == ' ') c = c.substring(1, c.length);
+      if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
+  }
+  return null;
+}
+
+// 페이지 로드 시 쿠키를 확인하고 팝업을 표시할지 결정
+window.addEventListener('load', function() {
+  if (!getCookie("popupHidden")) { // 쿠키가 없으면 팝업 표시
+      document.getElementById('popup').style.display = 'block';
+      
+      // 스크롤을 비활성화하기 전 스크롤바 너비 계산
+      const scrollbarWidth = window.innerWidth - document.documentElement.clientWidth;
+      
+      // 스크롤 제한
+      this.document.body.classList.add('overflow-hidden');
+      // document.body.style.overflow = 'hidden'; // 스크롤 제한
+      // document.body.style.paddingRight = `${scrollbarWidth}px`; // 오른쪽 여백 추가
+  }
+});
+
+// 팝업 닫기 버튼
+document.getElementById('closeBtn').addEventListener('click', function() {
+  const noShowCheckbox = document.getElementById('noShowCheckbox');
+  
+  if (noShowCheckbox.checked) { // 체크박스가 선택된 경우에만 쿠키 설정
+      setCookie("popupHidden", "true", 1); // 쿠키를 1일 동안 설정
+  }
+  
+  document.getElementById('popup').style.display = 'none';
+  document.body.classList.remove('overflow-hidden');
+  // document.body.style.overflow = ''; // 스크롤 복원
+  // document.body.style.paddingRight = '0'; // 오른쪽 여백 초기화
+});
+
+const popupSwiper = new Swiper('.swiper-container', {
+  pagination: {
+      el: '.swiper-pagination-popup',
+      clickable: true,
+      bulletClass: 'custom-bullet',
+      bulletActiveClass: 'custom-bullet-active',
+  },
+  loop: true, // 루프 설정 (필요시)
+});
+
+
+
+
+
+
+  /**
    * Scroll top button
    */
   let scrollTop = document.querySelector('.scroll-top');

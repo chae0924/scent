@@ -224,6 +224,124 @@ h6 {
   }
 }
 
+/* popup */
+/* 팝업 스타일 */
+.popup {
+  display: none;
+  position: fixed;
+  z-index: 1000000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: #00000070;
+  backdrop-filter: blur(1px); /* 배경 블러 처리 */
+}
+
+.popup-content {
+  position: relative;
+  margin: 10% auto;
+  padding: 30px 0 8px; /* 위아래 동일한 10px 패딩 */
+  background: white;
+  width: 26vw;
+  min-width: 330px;
+  border-radius: 10px;
+  text-align: center;
+  box-shadow: 0 8px 28px rgba(0, 0, 0, 0.1);
+}
+
+.popup-content img {
+  width: 100%; /* 좌우 꽉 차게 */
+  height: auto; /* 비율 유지 */
+  display: block;
+}
+
+.close {
+  position: absolute;
+  top: 0px;
+  right: 8px;
+  font-size: 20px;
+  cursor: pointer;
+  z-index: 1; /* 이미지 위가 아닌 흰색 바탕 위에 위치 */
+}
+
+.no-show {
+  margin-top: 8px;
+  text-align: left;
+  display: flex;
+}
+
+.no-show label {
+  display: inline-block;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+#noShowCheckbox {
+  display: block;
+  appearance: none; /* 기본 스타일 제거 */
+  width: 20px; /* 너비 조정 */
+  height: 20px; /* 높이 조정 */
+  border: 2px solid #ccc; /* 기본 테두리 색상 */
+  border-radius: 20%; /* 둥근 모양 */
+  outline: none; /* 기본 아웃라인 제거 */
+  cursor: pointer; /* 커서 포인터로 변경 */
+  margin-right: 5px;
+  margin-top: -0.2px;
+}
+
+input[type="checkbox"]#noShowCheckbox {
+  width: 20px; /* 체크박스 크기 */
+  height: 20px;
+  border: 2px solid #ccc; /* 기본 테두리 */
+  background-color: white; /* 기본 배경 */
+  appearance: none; /* 기본 체크박스 숨김 */
+  -webkit-appearance: none; /* 웹킷 기반 브라우저에서도 적용 */
+}
+
+input[type="checkbox"]#noShowCheckbox:checked {
+  border: 2px solid #f7acbe; /* 체크된 경우 테두리 색상 */
+  background-color: #f7acbe; /* 체크된 경우 배경 색상 */
+  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path fill="white" d="M6.293 9.293l-2.5-2.5a1 1 0 011.414-1.414l1.793 1.793 4.793-4.793a1 1 0 011.414 1.414l-5.5 5.5a1 1 0 01-1.414 0z"/></svg>'); /* 체크 표시 SVG */
+  background-size: 18px 18px; /* SVG 아이콘 크기 */
+  background-position: center 2px;
+  background-repeat: no-repeat;
+}
+
+
+#noShowCheckbox:focus {
+  outline: none !important; /* 포커스 아웃라인 제거 */
+  box-shadow: none !important; /* 박스 그림자 제거 */
+}
+
+.swiper-pagination-popup {
+  position: absolute;
+  bottom: 20px;
+  left: 100%;
+  z-index: 10;
+  display: flex;
+  justify-content: center;
+}
+
+.popup .swiper-container{
+  position: relative;
+  overflow: hidden;
+}
+
+.custom-bullet {
+  width: 10px;
+  height: 10px;
+  background: rgba(255, 255, 255, 0.5);
+  border-radius: 50%;
+  margin: 0 5px;
+}
+
+.custom-bullet-active {
+  background: #f7acbe;
+}
+
+
+
 /* PHP Email Form Messages
 ------------------------------*/
 .php-email-form .error-message {
@@ -323,7 +441,7 @@ h6 {
 .header .btn-getstarted:hover,
 .header .btn-getstarted:focus:hover {
   color: var(--contrast-color);
-  background: color-mix(in srgb, var(--accent-color), transparent 15%);
+  background: #f395ab;
 }
 
 @media (max-width: 1200px) {
@@ -501,8 +619,8 @@ h6 {
     display: none;
     list-style: none;
     position: absolute;
-    inset: 60px 20px 50vh 30vw;
-    min-width: 330px;
+    inset: 60px 5vw 50vh 30vw;
+    min-width: 200px;
     min-height: 230px;
     padding: 10px 0;
     margin: 0;
@@ -1042,7 +1160,7 @@ section,
 
 .hero .btn-get-started:hover {
   color: var(--contrast-color);
-  background: color-mix(in srgb, var(--accent-color), transparent 15%);
+  background: #f395ab;
   box-shadow: 0 8px 28px rgba(0, 0, 0, 0.1);
 }
 

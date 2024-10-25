@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Conveyor Example</title>
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+    <style>
+      #sec04 {
+  margin-top: 4.7727272727em;
+  /*
+  -25% 
+  */
+}
+article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {
+    display: block;
+}
+@media screen and (max-width: 1280px) {
+  #sec04 {
+    margin-top: 6em;
+  }
+}
+#sec04 .swiper-wrapper {
+  transition-timing-function: linear;
+}
+#sec04 .conveyor_wrap {
+  width: 100%;
+  padding-left: var(--spacing);
+  padding-right: var(--spacing);
+  overflow: visible;
+}
+#sec04 .conveyor_wrap .swiper-container {
+  overflow: visible;
+  max-width: calc(100% - var(--spacing) - var(--spacing));
+  margin-left: auto;
+  margin-right: auto;
+}
+#sec04 .conveyor_wrap + .conveyor_wrap {
+  margin-top: 1.8181818182em;
+  overflow: visible;
+}
+#sec04 .conveyor_wrap + .conveyor_wrap .swiper-container {
+  transform: translateX(-10%);
+}
+@media screen and (max-width: 1280px) {
+  #sec04 .conveyor_wrap + .conveyor_wrap {
+    margin-top: 1.3333333333em;
+  }
+}
+#sec04 .conveyor_wrapper {
+  display: flex;
+  align-items: stretch;
+  position: relative;
+  transition-timing-function: linear;
+}
+#sec04 .conveyor_wrapper.move {
+  transition: none;
+}
+#sec04 .conveyor_slide {
+  width: auto;
+  padding-right: 0.1818181818em;
+}
+#sec04 .conveyor_slide a {
+  display: block;
+  height: 100%;
+  border-radius: 0.625rem;
+  overflow: hidden;
+}
+#sec04 .conveyor_slide img {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+#sec04 .conveyor_lnk {
+  position: relative;
+  display: block;
+  filter: grayscale(1);
+  -webkit-filter: grayscale(1);
+}
+#sec04 .conveyor_lnk .hov_txt {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  gap: 0.3636363636em;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.2);
+  color: #fff;
+  font-size: 1em;
+  font-weight: 600;
+  font-family: var(--general-font);
+  visibility: hidden;
+  opacity: 0;
+  transition: opacity 0.25s;
+  padding-left: 0.7272727273em;
+  padding-right: 0.7272727273em;
+}
+@media screen and (max-width: 1440px) {
+  #sec04 .conveyor_lnk .hov_txt {
+    font-size: 0.875em;
+  }
+}
+@media screen and (max-width: 1280px) {
+  #sec04 .conveyor_lnk .hov_txt {
+    font-size: 1em;
+  }
+}
+#sec04 .conveyor_lnk .hov_txt::after {
+  content: "";
+  display: block;
+  width: 1em;
+  height: 1em;
+  background: url("/assets/images/common/ico_lnk_arr.svg") no-repeat center/100% auto;
+}
+@media screen and (min-width: 1025px), print {
+  #sec04 .conveyor_lnk:hover {
+    filter: grayscale(0);
+    -webkit-filter: grayscale(0);
+  }
+  #sec04 .conveyor_lnk:hover .hov_txt {
+    visibility: visible;
+    opacity: 1;
+  }
+}
+
+@keyframes conveyor2 {
+  0% {
+    transform: translateX(-50%);
+  }
+  100% {
+    transform: translateX(50%);
+  }
+}
+@keyframes conveyor {
+  0% {
+    left: -25%;
+  }
+  100% {
+    left: 125%;
+  }
+}
+    </style>
+</head>
+<body>
+  <section id="sec04" class="sect_wrap">
+    <div class="conveyor_wrap">
+        <div class="swiper-container">
+            <div class="conveyor_wrapper swiper-wrapper">
+                <div class="conveyor_slide swiper-slide">
+                    <a href="/lineup/read?prodId=214" class="conveyor_lnk">
+                        <img loading="lazy" src="./bby/img/woody.jpg" alt="Blank Palette">
+                        <span class="hov_txt">Blank Palette.</span>
+                    </a>
+                </div>
+                <div class="conveyor_slide swiper-slide">
+                    <a href="/lineup/read?prodId=33" class="conveyor_lnk">
+                        <img loading="lazy" src="./bby/img/woody.jpg" alt="Objet de Wanderlust Body Care">
+                        <span class="hov_txt">Objet de Wanderlust Body Care</span>
+                    </a>
+                </div>
+                <div class="conveyor_slide swiper-slide">
+                    <a href="/lineup/read?prodId=206" class="conveyor_lnk">
+                        <img loading="lazy" src="./bby/img/woody.jpg" alt="PHASE RUSH">
+                        <span class="hov_txt">PHASE RUSH</span>
+                    </a>
+                </div>
+                <div class="conveyor_slide swiper-slide">
+                    <a href="/lineup/read?prodId=47" class="conveyor_lnk">
+                        <img loading="lazy" src="./bby/img/woody.jpg" alt="SQUEELZY">
+                        <span class="hov_txt">SQUEELZY</span>
+                    </a>
+                </div>
+                <div class="conveyor_slide swiper-slide">
+                    <a href="/lineup/read?prodId=96" class="conveyor_lnk">
+                        <img loading="lazy" src="./bby/img/woody.jpg" alt="PURE SOURCE">
+                        <span class="hov_txt">PURE SOURCE</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="conveyor_wrap" data-aos="fade-in">
+        <div class="swiper-container" dir="rtl">
+            <div class="conveyor_wrapper swiper-wrapper">
+                <div class="conveyor_slide swiper-slide">
+                    <a href="/lineup/read?prodId=214" class="conveyor_lnk">
+                        <img loading="lazy" src="./bby/img/woody.jpg" alt="Blank Palette">
+                        <span class="hov_txt">Blank Palette.</span>
+                    </a>
+                </div>
+                <div class="conveyor_slide swiper-slide">
+                    <a href="/lineup/read?prodId=33" class="conveyor_lnk">
+                        <img loading="lazy" src="./bby/img/woody.jpg" alt="Objet de Wanderlust Body Care">
+                        <span class="hov_txt">Objet de Wanderlust Body Care</span>
+                    </a>
+                </div>
+                <div class="conveyor_slide swiper-slide">
+                    <a href="/lineup/read?prodId=206" class="conveyor_lnk">
+                        <img loading="lazy" src="./bby/img/woody.jpg" alt="PHASE RUSH">
+                        <span class="hov_txt">PHASE RUSH</span>
+                    </a>
+                </div>
+                <div class="conveyor_slide swiper-slide">
+                    <a href="/lineup/read?prodId=47" class="conveyor_lnk">
+                        <img loading="lazy" src="./bby/img/woody.jpg" alt="SQUEELZY">
+                        <span class="hov_txt">SQUEELZY</span>
+                    </a>
+                </div>
+                <div class="conveyor_slide swiper-slide">
+                    <a href="/lineup/read?prodId=96" class="conveyor_lnk">
+                        <img loading="lazy" src="./bby/img/woody.jpg" alt="PURE SOURCE">
+                        <span class="hov_txt">PURE SOURCE</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- sec04 :: e -->  
+  <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+    <script>
+        const main = {
+    init: function() {
+        this.mv = document.querySelector('#mv');
+        this.conts = Array.from(document.querySelectorAll('.sect_wrap'));
+        
+        this.banner = document.querySelector('.banner_wrap'); // sec03
+        
+        this.bannerSlide();
+        this.conveyorSlide();
+
+        // Fog
+        this.moveFog();
+        document.querySelector('.ft_top_btn').classList.add('on');
+
+        // banner
+        this.gridList = document.querySelector('.grid_lists');
+        this.gridLists = Array.from(this.gridList.querySelectorAll('.grid_item'));
+        this.gridLists.forEach(el => {
+            el.addEventListener('click', event => {
+                el.classList.toggle('on');
+            })
+        })
+        AOS.refresh();
+    },
+    moveFog: function() {
+        this.fogTimeout;
+        this.fogWrap = document.querySelector('#fogWrap');
+        if(!fogWrap) return;
+        this.currentX = fogWrap.getBoundingClientRect().left,
+        this.currentY = fogWrap.getBoundingClientRect().top;
+        this.isRender = false;
+        this.speed = isMobile ? 2 : 4;
+        document.addEventListener('mousemove', event => {
+            this.event = event;
+            if (this.fogTimeout) {
+                clearTimeout(this.fogTimeout);
+            }
+            this.x = event.clientX;
+            this.y = event.clientY;
+            this.isRender = true;
+        })
+        
+        const render = () => {
+            if(this.isRender) {
+                if(Math.abs((this.x + this.y) - (this.currentX + this.currentY)) > 50) {
+                    let dx = this.x - this.currentX,
+                        dy = this.y - this.currentY,
+                        distance = Math.sqrt(dx ** 2 + dy ** 2);
+                    
+                    let moveX = dx / distance;
+                    let moveY = dy / distance;
+                    this.currentX += moveX * this.speed;
+                    this.currentY += moveY * this.speed;
+                    if(!this.isMoving) {
+                        this.isMoving = setTimeout(() => {
+                            gsap.to(this.fogWrap, {
+                                x: this.currentX,
+                                y: this.currentY,
+                                duration: 0.1,
+                            });
+                            clearTimeout(this.isMoving);
+                            this.isMoving = '';
+                        }, 100);
+                    }
+                    this.elementX = this.x;
+                    this.elementY = this.y;
+                }
+            }
+
+            this.fogAnim = requestAnimationFrame(render);
+        }
+        this.fogAnim = requestAnimationFrame(render);
+    },
+    bannerSlide: function() {
+        const bannerContainer = this.banner.querySelector('.swiper-container');
+        const prevBtn = bannerContainer.parentNode.querySelector('.slide_btn.prev'),
+              nextBtn = bannerContainer.parentNode.querySelector('.slide_btn.next');
+        const paging = bannerContainer.parentNode.querySelector('.paging');
+        this.swiper = new Swiper(bannerContainer, {
+            slidesPerGroup: 1,
+            slidesPerView: 1,
+            // autoplay: {
+            //     delay: 3000,
+            //     disableOnInteraction: false,
+            // },
+            speed: 1000,          
+            pagination: {
+                el: paging,
+                type: 'fraction',
+            },
+            navigation: {
+                prevEl: prevBtn,
+                nextEl: nextBtn,
+            },
+        })
+    },
+    conveyorSlide: function() {
+        const lists = Array.from(document.querySelectorAll('.conveyor_wrap'));
+        this.conveyorSlides = [];
+        for(let i = 0; i < lists.length; i++) {
+            const el = lists[i];
+            const slides = Array.from(el.querySelectorAll('.conveyor_slide'));
+            el.addEventListener('mousedown', evt => {
+                if(evt.button === 2 ) {
+                    evt.preventDefault();
+                }
+            })
+            // const flow = new Flow();
+            // flow.init(el);
+            new Swiper(el.querySelector('.swiper-container'), {
+                observer: true,
+                observeParents: true,
+                slidesPerView: 3,
+                loop: true,
+                autoplay: {
+                    delay: 0,
+                    disableOnInteraction: false,
+                },
+                speed: 5000,
+                slidesOffsetAfter: 10,
+                loopAdditionalSlides: 14,
+                breakpoints: {
+                    800: {
+                        slidesPerView: 4,
+                    },
+                    1024: {
+                        slidesPerView: 5,
+                    }
+                }
+            })
+        }
+    },
+}
+
+function Flow() { }
+
+Flow.prototype = {
+    wrap: '',
+    box: '',
+    direction: 'left',
+    speed: 2,
+    degree: -1,
+    total: 16,
+    banners: [],
+    group: 0,
+    totalSize: '',
+    size: '',
+    matrix: '',
+    translate: '',
+    befTime: 0,
+    stack: 0,
+    loop: '',
+    touchType: '',
+    touchBl: false,
+    startX: 0,
+    moveX: 0,
+    init: function (el) {
+        this.wrap = el;
+        this.box = this.wrap.querySelector('.conveyor_wrapper');
+        this.banners = el.querySelectorAll('.conveyor_slide');
+        this.initArray();
+
+
+        var th = this;
+        this.box.addEventListener('mouseenter', function (e) {
+            th.stop();
+        });
+        this.box.addEventListener('mouseleave', function (e) {
+            th.run();
+            if (th.touchBl) th.touchBl = false;
+        });
+    },
+    initArray: function () {
+        var doc = document.createDocumentFragment();
+        var cp = []; // copy
+        while (true) {
+            if ((this.banners.length + cp.length) - this.total >= 0) break;
+            for (var i = 0; i < this.banners.length; i++) {
+                var banner = this.banners[i];
+                cp.push(banner.cloneNode(true));
+                if (i > (this.banners.length - 1)) {
+                    doc.prepend($(this.banners).slice()[i].cloneNode(true));
+                } else {
+                    doc.appendChild($(this.banners).slice()[i].cloneNode(true));
+                }
+            }
+        }
+        if (cp.length != 0) this.group = (cp.length / this.banners.length) + 1;
+        this.box.append(doc);
+        this.banners = this.box.querySelectorAll('.conveyor_slide');
+        this.initArrage();
+    },
+    returnCeil: function (num) {
+        return Math.ceil(num * 100) / 100;
+    },
+    initArrage: function () {
+        this.calcTotalSize();
+        this.box.style.transform = 'translateX(' + Math.ceil(-1 * this.totalSize / this.group) + 'px) rotate(0.01deg)';
+    },
+    calcTotalSize: function () {
+        var cnt = this.banners.length;
+        var wid = 0;
+        console.log(this.banners[0]);
+        console.log(this.banners[0].clientWidth);
+        this.size = this.returnCeil(this.banners[0].offsetWidth);
+        while (cnt) {
+            wid += this.returnCeil(this.banners[--cnt].getBoundingClientRect().width);
+        }
+        wid = this.returnCeil(wid);
+        this.totalSize = wid;
+        this.box.style.width = this.totalSize + 'px';
+    },
+    saveMatrix: function () {
+        this.matrix = $(this.box).css('transform').replace(/[^0-9\-.,]/g, '').split(',');
+        this.translate = this.matrix[4];
+    },
+    relocation: function () {
+        if (this.degree != -1) {
+            this.box.prepend(this.banners[this.banners.length - 1]);
+        } else {
+            this.box.append(this.banners[0]);
+        }
+        this.banners = $(this.box).find('.conveyor_slide').slice();
+    },
+    stop: function () {
+        cancelAnimationFrame(this.loop);
+    },
+    run: function (time) {
+        var th = this;
+        this.loop = requestAnimationFrame(loop);
+        this.loop = requestAnimationFrame(loop);
+        function loop(time) {
+            th.saveMatrix();
+            if (Math.abs(Math.floor(th.translate / th.size)) != th.stack) {
+                // th.box.style.transform = 'translateX(' + (Number(th.translate) - (th.degree * th.size)) + 'px) rotate(0.01deg)';
+                // th.relocation();
+            //     th.saveMatrix();
+            //     th.stack = Math.abs(Math.floor(th.translate / th.size));
+            }else {
+                th.stack = Math.abs(Math.floor(th.translate / th.size));
+                th.box.style.transform = 'translateX(' + (Number(th.translate) + (th.degree * th.speed)) + 'px) rotate(0.01deg)'
+            }
+            th.loop = requestAnimationFrame(loop);
+        }
+    },
+}
+
+
+function isNode(value) {
+    return value instanceof Node;
+}
+
+function isAttrObject(value) {
+    return value != null && typeof value === 'object' && !isNode(value);
+}
+
+function setAttributes(element, object) {
+    Object.keys(object).forEach(function (key) {
+        element.setAttribute(key, object[key]);
+    });
+}
+
+function toNode(value, doc) {
+    switch (typeof value) {
+        case 'boolean':
+        case 'number':
+        case 'string':
+            return doc.createTextNode(value.toString());
+        case 'undefined':
+            return doc.createTextNode('undefined');
+        default:
+            if (value === null) {
+                return doc.createTextNode('null');
+            }
+
+            if (isNode(value)) {
+                return value;
+            }
+
+            if (Array.isArray(value) && value.length >= 1) {
+                var element = doc.createElement(value[0]);
+
+                var i = 1;
+
+                if (value.length > i) {
+                    if (isAttrObject(value[i])) {
+                        setAttributes(element, value[i]);
+                        i++;
+                    }
+
+                    if (value.length > i) {
+                        element.append.apply(element, value.slice(i));
+                    }
+                }
+
+                return element;
+            }
+            throw new Error();
+    }
+}
+
+Node.prototype.append = function () {
+    for (var i = 0; i < arguments.length; i++) {
+        this.appendChild(toNode(arguments[i], this.ownerDocument));
+    }
+};
+    </script>
+</body>
+</html>

@@ -1035,6 +1035,30 @@
   <!-- Preloader -->
   <div id="preloader"></div>
 
+  <!-- 팝업 창 -->
+  <div id="popup" class="popup">
+    <div class="popup-content">
+        <span id="closeBtn" class="close">&times;</span>
+        <div class="swiper-container">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide">
+                    <img src="./bby/img/popup.jpg" alt="팝업 이미지 1">
+                </div>
+                <div class="swiper-slide">
+                    <img src="./bby/img/popup.jpg" alt="팝업 이미지 2">
+                </div>
+            </div>
+            <div class="swiper-pagination-popup"></div> <!-- 페이지네이션 추가 -->
+        </div>
+        <div class="no-show">
+            <input type="checkbox" id="noShowCheckbox" class="mx-2">
+            <label for="noShowCheckbox">오늘 하루 보지 않기</label>
+        </div>
+    </div>
+  </div>
+  
+
+
   <!-- Vendor JS Files -->
   <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
   <script src="assets/vendor/php-email-form/validate.js"></script>
